@@ -50,6 +50,7 @@ def zeros_and_ones(lst_01):
     amount_1 = count(1, lst_01)
     if amount_1 > amount_0:
         return True
+    # only option left is:  amount_1 <= amount_0
     return False
 
 

@@ -12,6 +12,7 @@ def palindrome_check(string):
         return True
     if string[0] == string[-1]:
         return palindrome_check(string[1:-1])
+    # only option left is:  string[0] != string[-1]
     return False
 
 

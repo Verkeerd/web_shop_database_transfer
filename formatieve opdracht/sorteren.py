@@ -16,7 +16,7 @@ def binary_index(sorted_lst, item, mini, maxi):
         return midi
     if item < sorted_lst[midi]:
         return binary_index(sorted_lst, item, mini, midi - 1)
-    # item > sorted_lst[midi]
+    # only option left is:  item > sorted_lst[midi]
     return binary_index(sorted_lst, item, midi + 1, maxi)
 
 

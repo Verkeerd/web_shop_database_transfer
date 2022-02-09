@@ -21,6 +21,7 @@ def different_index_strings(string_1, string_2):
     # the first string will no longer coincide with the second
     if string_2 > string_1:
         return len_s1
+    # only option left is:  if string_1 == string_2
     return -1
 
 
