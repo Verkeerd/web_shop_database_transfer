@@ -1,15 +1,10 @@
 def encrypt(char, n):
     """
-    Takes an alphabetic character and a number as input. Converts the character to its ascii value. adds n to the ascii
-    value. If this sum will make the new ascii value outside of the latin character range on the ascii table, shifts the
-    value to the other side of the range in the ascii table (e.g. 122 (z) + 1 = 97 (a)). Converts the new calculated
-    ascii value back to a latin character and returns this character.
-    args:
-        :param char: (str) a latin (/alpha) character
-        :param n: (int) a number that will be the amount of steps the character will shift in the alphabet
-        (with char = a (97), an n of 3 will give d (100) )
-    returns:
-        :return: (str) a latin (/alpha) character
+    Takes an alphabetic character and a number as input.
+    Converts the character to its ascii value. adds n to the ascii value. If this sum will make the new ascii value
+    outside the range of latin characters on the ascii table, shifts the value to the other side of this range
+    (e.g. 122 (z) + 1 = 97 (a)).
+    Converts the new calculated ascii value back to a latin character. Returns this character.
     """
     ascii_value = ord(char)
     temp_ascii = ascii_value + n
@@ -35,8 +30,6 @@ def caeser_cypher():
     Asks user for a string and a rotation coefficient. encrypts the given string with a caesar-cypher. The rotation
     coefficient is the amount of steps taken, with steps to the right for a positive rotation coefficient. With a
     negative one, the steps are taken to the left. Prints the encrypted string.
-    returns:
-        :return: doesn't return anything; string has been gathered, encrypted and printed.
     """
     plain_txt = input('Give text: ')
     try:

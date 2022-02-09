@@ -1,10 +1,6 @@
 def fibonacci(n):
     """
     Takes a number (n) as input. Calculates the nth number of the fibonacci sequence and returns this.
-    args:
-        :param n: (int) index of the fibonacci sequence
-    returns:
-        :return: (int) number on the nth index of the fibonacci sequence
     """
     if n == 0:
         return 0

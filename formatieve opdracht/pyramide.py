@@ -58,8 +58,6 @@ def pyramid_reverse_while():
     """
     Asks the user for a number n. Prints a pyramid made of star characters (*). The pyramid is n high and n + n - 1
     wide. The Pyramid is anchored to the right side.
-    returns:
-        :return: nothing; the pyramid is printed
     """
     try:
         amount = int(input('How big? '))

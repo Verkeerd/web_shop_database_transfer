@@ -23,8 +23,6 @@ def guess_the_number():
     Asks the user for a number. Generates a number between 0 and the given number. Lets the user guess until they guess
     the generated number, or they quit the program. Prints the amount of rounds it took the user to guess the number
     when the program quits.
-    returns:
-        :return: doesn't return anything; the game has been played.
     """
     print('This is a game where we think of a number and you try to guess it!\n'
           'First, please give the maximum number we think of\n')
