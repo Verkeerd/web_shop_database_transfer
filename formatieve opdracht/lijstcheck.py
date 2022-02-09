@@ -1,6 +1,6 @@
 def count(x, lst):
     """
-    takes a number and a list as input. counts how often x is an item of the list and returns this count.
+    Takes a number and a list as input. Counts how often x is an item of the list and returns this count.
     args:
         :param x: (int) a number
         :param lst: (list) a list
@@ -16,8 +16,8 @@ def count(x, lst):
 
 def biggest_step(lst):
     """
-    takes a list as input. Measures the difference between the items on each consecutive index of the list. returns the
-    biggest difference.
+    Takes a list as input. Measures the difference between the items on each consecutive index of the list.
+    Returns the biggest difference.
     args:
         :param lst: (list) a list
     returns:
@@ -35,10 +35,10 @@ def biggest_step(lst):
 
 def zeros_and_ones(lst_01):
     """
-    takes a list of which all items are either a 0 or a 1. checks if the list meets the following requirements:
-    - there are more 1's than there are 0's.
-    - there are no more than twelve 0's
-    returns True if the requirements are met. Returns False otherwise.
+    Takes a list of which all items are either a 0 or a 1. Checks if the list meets the following requirements:
+    - There are more 1's than there are 0's.
+    - There are no more than twelve 0's
+    Returns True if the requirements are met. Returns False otherwise.
     args:
         :param lst_01: a list with items that are either a 0 or a 1.
     returns:

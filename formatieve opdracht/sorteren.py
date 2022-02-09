@@ -1,6 +1,6 @@
 def binary_index(sorted_lst, item, mini, maxi):
     """
-    takes a sorted list and an item as input. returns the index on which the item should be inserted.
+    Takes a sorted list and an item as input. Returns the index on which the item should be inserted.
     args:
         :param sorted_lst: (list) a sorted list
         :param item: item you are searching the index for in the sorted list.
@@ -22,7 +22,7 @@ def binary_index(sorted_lst, item, mini, maxi):
 
 def my_sort(lst):
     """
-    takes an unsorted list as input. binary sorts a copy of the list. returns this copy.
+    Takes an unsorted list as input. Binary sorts a copy of the list. Returns this copy.
     args:
         :param lst: (list) an unsorted list.
     returns:

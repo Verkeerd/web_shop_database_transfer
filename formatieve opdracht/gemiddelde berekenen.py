@@ -1,6 +1,6 @@
 def calculate_average_lst(lst):
     """
-    takes a list of numbers as input. calculates the average and returns it.
+    Takes a list of numbers as input. Calculates the average and returns it.
     args:
         :param lst: (list) [int] a list of numbers
     returns:
@@ -12,8 +12,8 @@ def calculate_average_lst(lst):
 
 def calculate_average_matrix(matrix):
     """
-    takes a list containing lists with numbers as input. calculates the average for each list item of the matrix.
-    returns all averages in a new list.
+    Takes a list containing lists with numbers as input. Calculates the average for each list item of the matrix.
+    Returns all averages in a new list.
     args:
         :param matrix: (list) [[int]] a list with items that are lists containing numbers.
     returns:

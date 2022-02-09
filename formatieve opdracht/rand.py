@@ -3,9 +3,9 @@ import random
 
 def input_int_safe():
     """
-    asks the user for a number. checks if the number is given in the correct format (as a symbol). returns this number
-    when it passes the check. asks the user if they want to stop if they give the wrong input. returns None if the user
-    quits. Otherwise, returns another instance of this function.
+    Asks the user for a number. Checks if the number is given in the correct format (as a symbol). Returns this number
+    when it passes the check. Asks the user if they want to stop if they give the wrong input. Returns None if the user
+    quits. Otherwise, returns a new instance of this function.
     returns:
         :return: (int) input from the user when this input is valid
         :return: None when the user quits the program

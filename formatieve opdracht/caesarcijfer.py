@@ -1,6 +1,6 @@
 def encrypt(char, n):
     """
-    takes an alphabetic character and a number as input. Converts the character to its ascii value. adds n to the ascii
+    Takes an alphabetic character and a number as input. Converts the character to its ascii value. adds n to the ascii
     value. If this sum will make the new ascii value outside of the latin character range on the ascii table, shifts the
     value to the other side of the range in the ascii table (e.g. 122 (z) + 1 = 97 (a)). Converts the new calculated
     ascii value back to a latin character and returns this character.
@@ -32,7 +32,7 @@ def encrypt(char, n):
 
 def caeser_cypher():
     """
-    asks user for a string and a rotation coefficient. encrypts the given string with a caesar-cypher. The rotation
+    Asks user for a string and a rotation coefficient. encrypts the given string with a caesar-cypher. The rotation
     coefficient is the amount of steps taken, with steps to the right for a positive rotation coefficient. With a
     negative one, the steps are taken to the left. Prints the encrypted string.
     returns:

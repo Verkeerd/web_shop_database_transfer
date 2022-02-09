@@ -1,7 +1,7 @@
 def different_index_strings(string_1, string_2):
     """
-    takes two strings as input. Compares each index of the two strings with each other until it finds two indexes that
-    aren't identical. Returns the index on which the difference was found. returns -1 if the strings are identical
+    Takes two strings as input. Compares each index of the two strings with each other until it finds two indexes that
+    aren't identical. Returns the index on which the difference was found. Returns -1 if the strings are identical
     args:
         :param string_1: (str) a string you want to compare
         :param string_2: (str) a string you want to compare
