@@ -14,7 +14,9 @@ def write_to_file(data, file):
 
 
 def pass_void(string):
-    r"""Takes a string as input. returns a copy of the string without empty spaces (' ', '\n', '\t') at the beginning"""
+    r"""
+    Takes a string as input. returns a copy of the string without empty spaces (' ', '\n', '\t') at the beginning.
+    """
     unwanted = ' \n\t'
     for i, char in enumerate(string):
         if char not in unwanted:
@@ -24,8 +26,8 @@ def pass_void(string):
 def compress_file(file):
     """
     Takes the location of a file as input. Reads the content of the file and compresses it by:
-    - Deleting all spaces and spaces at the beginning of a line
-    - Deleting all empty lines
+    - Deleting all spaces and spaces at the beginning of a line.
+    - Deleting all empty lines.
     Writes this compressed data to a new file.
     """
     data_list = read_file_lines(file)

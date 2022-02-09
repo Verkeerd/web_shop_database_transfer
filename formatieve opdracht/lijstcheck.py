@@ -26,7 +26,7 @@ def zeros_and_ones(lst_01):
     """
     Takes a list of which all items are either a 0 or a 1. Checks if the list meets the following requirements:
     - There are more 1's than there are 0's.
-    - There are no more than twelve 0's
+    - There are no more than twelve 0's.
     Returns True if the requirements are met. Returns False otherwise.
     """
     amount_0 = count(0, lst_01)
