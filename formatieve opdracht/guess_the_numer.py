@@ -44,10 +44,10 @@ def guess_the_number():
         if not guess:
             print('Goodbye!')
             return None
-        print('Your {} guess is {}'.format(tries, guess))
+        print('Your {} guess is {}\n'.format(tries, guess))
     print('That is correct!\n'
           'The answer was {}.\n'
-          'it took you {} rounds to guess it'.format(answer, tries))
+          'it took you {} rounds to guess the answer'.format(answer, tries))
 
 
 guess_the_number()
