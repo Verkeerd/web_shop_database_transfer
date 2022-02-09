@@ -2,25 +2,19 @@ working_file = 'decompressed_file.txt'
 
 
 def read_file_lines(file):
-    """
-    Takes the location of a file as input. reads the file and returns each line as an item of a list.
-    """
+    """Takes the location of a file as input. reads the file and returns each line as an item of a list."""
     with open(file, 'r') as open_file:
         return open_file.readlines()
 
 
 def write_to_file(data, file):
-    """
-    Takes data and the location of a file as input. writes the data to the file.
-    """
+    """Takes data and the location of a file as input. writes the data to the file."""
     with open(file, 'w') as open_file:
         open_file.write(data)
 
 
 def pass_void(string):
-    r"""
-    Takes a string as input. returns a copy of the string without empty spaces (' ', '\n', '\t') at the beginning.
-    """
+    r"""Takes a string as input. returns a copy of the string without empty spaces (' ', '\n', '\t') at the beginning"""
     unwanted = ' \n\t'
     for i, char in enumerate(string):
         if char not in unwanted:

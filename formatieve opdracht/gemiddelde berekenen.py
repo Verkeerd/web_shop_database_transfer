@@ -1,7 +1,5 @@
 def calculate_average_lst(lst):
-    """
-    Takes a list of numbers as input. Calculates the average and returns it.
-    """
+    """Takes a list of numbers as input. Calculates the average and returns it."""
     # returns the sum of all the items in the list, divided by the amount of items
     return sum(lst) / len(lst)
 

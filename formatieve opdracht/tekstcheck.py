@@ -1,7 +1,9 @@
 def different_index_strings(string_1, string_2):
     """
-    Takes two strings as input. Compares each index of the two strings with each other until it finds two indexes that
-    aren't identical. Returns the index on which the difference was found. Returns -1 if the strings are identical
+    Takes two strings as input.
+    Compares each index of the two strings with each other, until it finds two indexes that aren't identical.
+    Returns the index on which the difference was found.
+    Returns -1 if the strings are identical
     """
     len_s1 = len(string_1)
     for i in range(len_s1):

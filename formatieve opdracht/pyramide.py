@@ -2,8 +2,6 @@ def pyramid():
     """
     Asks the user for a number n. Prints a pyramid made of star characters (*). The pyramid is n high and n + n - 1
     wide. The Pyramid is anchored to the left side.
-    returns:
-        :return: nothing; the pyramid is printed
     """
     try:
         amount = int(input('How big? '))
@@ -19,8 +17,7 @@ def pyramid():
 def pyramid_while():
     """
     Asks the user for a number n. Prints a pyramid made of star characters (*). The pyramid is n high and n + n - 1
-    wide. The Pyramid is anchored to the left side.returns:
-        :return: nothing; the pyramid is printed
+    wide. The Pyramid is anchored to the left side.
     """
     try:
         amount = int(input('How big? '))
@@ -40,8 +37,6 @@ def pyramid_reverse():
     """
     Asks the user for a number n. Prints a pyramid made of star characters (*). The pyramid is n high and n + n - 1
     wide. The Pyramid is anchored to the right side.
-    returns:
-        :return: nothing; the pyramid is printed
     """
     try:
         amount = int(input('How big? '))

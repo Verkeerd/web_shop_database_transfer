@@ -1,5 +1,8 @@
 def binary_index(sorted_lst, item, mini, maxi):
-    """Takes a sorted list and an item as input. Returns the index on which the item should be inserted."""
+    """
+    Takes a sorted list and an item as input.
+    Returns the index on which the item should be inserted.
+    """
     if mini > maxi:
         return maxi + 1
     midi = mini + ((maxi - mini) // 2)
@@ -12,7 +15,10 @@ def binary_index(sorted_lst, item, mini, maxi):
 
 
 def my_sort(lst):
-    """Takes an unsorted list as input. Binary sorts a copy of the list. Returns this copy."""
+    """
+    Takes an unsorted list as input. Binary sorts a copy of the list.
+    Returns this copy.
+    """
     sorted_lst = [lst[0]]
     for item in lst[1:]:
         sorted_lst.insert(binary_index(sorted_lst, item, 0, (len(sorted_lst) - 1)), item)
