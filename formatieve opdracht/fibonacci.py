@@ -1,7 +1,5 @@
 def fibonacci(n):
-    """
-    Takes a number (n) as input. Calculates the nth number of the fibonacci sequence and returns this.
-    """
+    """Takes a number (n) as input. Calculates the nth number of the fibonacci sequence and returns this."""
     if n == 0:
         return 0
     if n == 1:

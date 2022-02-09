@@ -1,7 +1,5 @@
 def count(x, lst):
-    """
-    Takes a number and a list as input. Counts how often x is an item of the list and returns this count.
-    """
+    """Takes a number and a list as input. Counts how often x is an item of the list and returns this count."""
     result = 0
     for item in lst:
         if item == x:
