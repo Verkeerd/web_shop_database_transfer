@@ -16,8 +16,7 @@ def binary_index(sorted_lst, item, mini, maxi):
         return midi
     elif item < sorted_lst[midi]:
         return binary_index(sorted_lst, item, mini, midi - 1)
-    else:  # item > sorted_lst[midi]
-        return binary_index(sorted_lst, item, midi + 1, maxi)
+    return binary_index(sorted_lst, item, midi + 1, maxi)
 
 
 def my_sort(lst):

@@ -8,12 +8,11 @@ def palindrome_check(string):
         :return: (bool) True when the string is a palindrome, otherwise False.
     """
     len_s = len(string)
-    if len_s == 1 or len_s == 2:
+    if len_s in (0, 1):
         return True
     if string[0] == string[-1]:
         return palindrome_check(string[1:-1])
-    else:
-        return False
+    return False
 
 
 print(palindrome_check('noon'))

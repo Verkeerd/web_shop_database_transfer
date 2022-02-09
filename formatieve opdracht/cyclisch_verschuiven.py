@@ -13,8 +13,7 @@ def shift_bits(ch, n):
         return ch
     elif n < 0:
         return shift_bits(ch[-1] + ch[:-1], n + 1)
-    else:  # n > 0
-        return shift_bits(ch[1:] + ch[0], n - 1)
+    return shift_bits(ch[1:] + ch[0], n - 1)
 
 
 for i in range(-4, 4):

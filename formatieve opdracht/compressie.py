@@ -35,8 +35,8 @@ def pass_void(string):
         :return: (str) copy of the input string starting with the first index that isn't an empty space (' ', '\n', '\t')
     """
     unwanted = ' \n\t'
-    for i in range(len(string)):
-        if string[i] not in unwanted:
+    for i, char in enumerate(string):
+        if char not in unwanted:
             return string[i:]
 
 
@@ -52,16 +52,19 @@ def compress_file(file):
         :return: doesn't return anything; the data is compressed and written to a new file
     """
     data_list = read_file_lines(file)
+
     compressed_data = ''
     for line in data_list:
         trimmed_line = pass_void(line)
         if trimmed_line:
             compressed_data += trimmed_line
+
     new_file = file[:-4] + '_compressed.txt'
+
     if compressed_data[-1] == '\n':
         write_to_file(compressed_data[:-1], new_file)
-    else:
-        write_to_file(compressed_data, new_file)
+
+    write_to_file(compressed_data, new_file)
 
 
 compress_file(working_file)
