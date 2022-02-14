@@ -136,27 +136,27 @@ You can choose from the following colours:
     - yellow (y)
     - purple (p)
     - orange (o)
-    
+
 When you have created the combination, I will attempt to guess it.
 After I guess, please provide me with feedback!
 
 Give me a red pin for every peg that is the correct colour and in the correct spot.
 Give a white pin for every peg that is the the correct colour, but not in the correct spot.
 
-Every peg in your code can only award one pin. Red feedback_pins have priority over white feedback_pins. 
-(e.g. if your code is:   Blue,   Blue,   Green,  Green 
-and I guess:             Blue,   Green,  Green,  Green, 
-I will receive two red feedback_pins and no white ones. 
-The second peg in my guess (green) will not receive a white peg, because both green pegs 
-in your code already awarded a pin.) 
+Every peg in your code can only award one pin. Red feedback_pins have priority over white feedback_pins.
+(e.g. if your code is:   Blue,   Blue,   Green,  Green
+and I guess:             Blue,   Green,  Green,  Green,
+I will receive two red feedback_pins and no white ones.
+The second peg in my guess (green) will not receive a white peg, because both green pegs
+in your code already awarded a pin.)
 
 
-Those are the rules! 
-If you are confused about anything, please look up the official mastermind rules at 
+Those are the rules!
+If you are confused about anything, please look up the official mastermind rules at
 https://www.ultraboardgames.com/mastermind/game-rules.php
 
 
-Please create a combination! 
+Please create a secret code!
 Remember it well, or write it down somewhere.
 
 Press Enter to continue
