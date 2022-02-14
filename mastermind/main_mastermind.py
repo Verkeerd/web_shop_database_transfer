@@ -6,7 +6,10 @@ colour_amount = 6
 
 
 def begin_mastermind():
-    """"""
+    """
+    Starts mastermind. Shows information to the user. There are two game-modes. One where you break the code and one
+    where you think of a code and our code breaker bot breaks it. Asks for and handles the users choice.
+    """
     active = True
     while active:
         route = input("""
@@ -35,4 +38,5 @@ Enter your choice:
                 active = False
 
 
-begin_mastermind()
+if __name__ == '__main__':
+    begin_mastermind()
