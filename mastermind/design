@@ -24,6 +24,7 @@ routes:
     amount of pins: 4; amount of colours: 8
 
         - generate random combination
+        use random library
         generate a random list of 4 with integers from 0 up until 7
 
         - ask for guess

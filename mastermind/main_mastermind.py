@@ -1,14 +1,12 @@
 import guess_the_code
 import code_breaker_bot
 
-pegs = 4
-colour_amount = 6
 
-
-def begin_mastermind(slots, colour_range):
+def begin_mastermind():
     """
     Starts mastermind. Shows information to the user. There are two game-modes. One where you break the code and one
-    where you think of a code and our code breaker bot breaks it. Asks for and handles the users choice.
+    where you think of a code and our code breaker bot breaks it. Asks for the users choice and starts the appropriate
+    sub-system (game-mode).
     """
     active = True
     while active:
@@ -26,17 +24,17 @@ Break the code or watch our code-breaker bot crack yours!
 Enter your choice: 
 """).strip()
         if route == '1':
-            guess_the_code.code_creator(slots, colour_range)
+            guess_the_code.code_creator()
         elif route == '2':
-            code_breaker_bot.code_breaker(slots, colour_range)
+            code_breaker_bot.code_breaker()
         else:
             confirm = input('\nYou are quitting the program.\n'
                             'are you sure?\n'
-                            'enter "yes" to quit:\n').strip().lower()
-            if confirm == 'yes':
+                            'enter "quit" to quit:\n').strip().lower()
+            if confirm == 'quit':
                 # stops the program
                 active = False
 
 
 if __name__ == '__main__':
-    begin_mastermind(pegs, colour_amount)
+    begin_mastermind()
