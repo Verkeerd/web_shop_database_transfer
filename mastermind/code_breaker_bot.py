@@ -63,6 +63,7 @@ def next_guess(codes_to_check, all_codes):
     Returns the code (list) [int] with the lowest worst case scenario.
     """
     print('I\'m thinking about my next move...')
+
     best_code = []
     least_combinations_left = len(all_codes)
 
@@ -70,11 +71,14 @@ def next_guess(codes_to_check, all_codes):
         worst_case = 0
         for peg_outcome in possible_pegs:
             codes_left_over = len(eliminate_codes(gf.str_to_integer_list(code), all_codes, peg_outcome))
-
+            # updates worst_case if a peg_outcome a with higher amount of codes left over after is found.
             if codes_left_over > worst_case:
                 worst_case = codes_left_over
+        # if the worst-case of code is better than previously recorded best worst-case
+        # records new best worst-case. records new best code.
         if worst_case < least_combinations_left:
             best_code = code
+            least_combinations_left = worst_case
 
     return gf.str_to_integer_list(best_code)
 
@@ -87,7 +91,6 @@ def first_guess(all_codes):
     and                                 yellow  yellow  yellow  red
     Returns the best first guess.
     """
-
     starters = ['0000', '0001', '0011', '0122', '0123']
 
     return next_guess(starters, all_codes)
