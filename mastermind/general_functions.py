@@ -78,7 +78,7 @@ def safe_int_input(message):
         print('Input was not recognised. Please enter an integer.\n(e.g. "4")')
         # returns false if the user wants to quit
         if input_escape_path():
-            return -1
+            return None
         # calls this function again if the user wants to try again.
         return safe_int_input(message)
 

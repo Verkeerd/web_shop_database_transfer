@@ -100,13 +100,13 @@ def get_feedback():
     Returns false if the user doesn't enter valid input and choses to quit.
     """
     black_pins = gf.safe_int_input('how many red pins?:\n')
-    if black_pins == -1:
+    if not black_pins and black_pins != 0:
         return False
     if black_pins == 4:
         return 4, 0
 
     white_pins = gf.safe_int_input('how many white pins?:\n')
-    if white_pins == -1:
+    if not white_pins and white_pins != 0:
         return False
 
     return black_pins, white_pins
@@ -187,7 +187,9 @@ My first guess is {}
         rounds += 1
         # eliminates all combination no longer possible with the provided feedback
         possible_codes = eliminate_codes(guess=guess, all_codes=possible_codes, feedback_pins=feedback_pins)
-
+        if not possible_codes:
+            print('I\'m all out of guesses!\nPlease review your feedback to make sure you didn\'t make a mistake.')
+            return None
         # calculates the next best guess (based on the best worst-case scenario)
         guess = next_guess(possible_codes, possible_codes)
 

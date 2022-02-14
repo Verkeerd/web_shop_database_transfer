@@ -21,6 +21,7 @@ def pass_void(string):
     for i, char in enumerate(string):
         if char not in unwanted:
             return string[i:]
+    return None
 
 
 def compress_file(file):
