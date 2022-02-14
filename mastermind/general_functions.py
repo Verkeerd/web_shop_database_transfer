@@ -147,8 +147,9 @@ def generate_code(slots, colour_range):
     Generates a string. The string is n characters long. Every character is a random generated number between 0 and r.
     """
     result = []
-    for i in range(slots):
+    while slots >= 1:
         result.append(random.randrange(0, colour_range))
+        slots -= 1
     return result
 
 

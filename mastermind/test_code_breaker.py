@@ -11,7 +11,7 @@ def test_code_breaker(repeat=100):
     """
     initial_combination_list = bot.all_possible_codes(4, 6)
     error_runs = 0
-    for i in range(repeat):
+    while repeat >= 1:
         # copies original list so entries can be deleted (and I don't have to generate the list again every loop)
         combination_list = initial_combination_list.copy()
         rounds = 1
@@ -37,6 +37,7 @@ def test_code_breaker(repeat=100):
             guess = bot.next_guess(combination_list, combination_list)
             pins = gf.pin_feedback(guess, secret_code)
 
+        repeat -= 1
         print('the computer played against itself and guessed {} in {} rounds\n'.format(guess, rounds))
     # When the code is broken, we break out of the loop
     print('The code-breaker bot broke itself {} times'.format(error_runs))
