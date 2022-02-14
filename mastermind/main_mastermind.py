@@ -5,7 +5,7 @@ pegs = 4
 colour_amount = 6
 
 
-def begin_mastermind():
+def begin_mastermind(slots, colour_range):
     """
     Starts mastermind. Shows information to the user. There are two game-modes. One where you break the code and one
     where you think of a code and our code breaker bot breaks it. Asks for and handles the users choice.
@@ -26,9 +26,9 @@ Break the code or watch our code-breaker bot crack yours!
 Enter your choice: 
 """).strip()
         if route == '1':
-            guess_the_code.code_creator(pegs, colour_amount)
+            guess_the_code.code_creator(slots, colour_range)
         elif route == '2':
-            code_breaker_bot.code_breaker()
+            code_breaker_bot.code_breaker(slots, colour_range)
         else:
             confirm = input('You are quitting the program.\n'
                             'are you sure?\n'
@@ -39,4 +39,4 @@ Enter your choice:
 
 
 if __name__ == '__main__':
-    begin_mastermind()
+    begin_mastermind(pegs, colour_amount)

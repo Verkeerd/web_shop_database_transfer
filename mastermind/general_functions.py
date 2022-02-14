@@ -139,6 +139,7 @@ def readable_colour(colour):
         return 'purple'
     if colour in int_str_colors[5]:
         return 'orange'
+    return ''
 
 
 def generate_code(slots, colour_range):

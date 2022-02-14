@@ -206,7 +206,7 @@ It was {}
 It took me {} rounds to guess it.
 
 ##########################################################################################
-1) play again
-2) open selection menu
+1) Play again
+2) Open selection menu
 """.format(readable_guess, rounds)).strip() == '1':
         code_breaker(slots, colour_range)
