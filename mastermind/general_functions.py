@@ -1,7 +1,5 @@
 import random
 
-colours_in_program = ['r', 'b', 'g', 'y', 'p', 'o']
-
 
 ########################################################################################################################
 # pins
@@ -57,7 +55,7 @@ def input_escape_path():
     Returns True if the user wants to quit. Returns false otherwise.
     """
     if input('Enter "end" to stop\n'
-             'Enter anything else to try again:\n').strip() == 'end':
+             'Enter anything else to try again:\n').strip().lower() == 'end':
         return True
     # returns False if the user wants to continue
     return False
@@ -78,7 +76,7 @@ def safe_int_input(message):
         print('Input was not recognised. Please enter an integer.\n(e.g. "4")')
         # returns false if the user wants to quit
         if input_escape_path():
-            return None
+            return -1
         # calls this function again if the user wants to try again.
         return safe_int_input(message)
 
@@ -108,6 +106,9 @@ def format_colours(colour_list):
 
 ########################################################################################################################
 # colours
+colours_in_program = ['r', 'b', 'g', 'y', 'p', 'o']
+
+
 def check_colour(colour):
     """
     Takes a colour (str) as input. checks if this colour is allowed by the game. Returns True if this is case, returns
@@ -126,19 +127,10 @@ def readable_colour(colour):
     Takes the representation of a colour (first letter or int in use for this colour) as input. Returns the full name of
     the colour.
     """
-    int_str_colors = list(enumerate(colours_in_program))
-    if colour in int_str_colors[0]:
-        return 'red'
-    if colour in int_str_colors[1]:
-        return 'blue'
-    if colour in int_str_colors[2]:
-        return 'green'
-    if colour in int_str_colors[3]:
-        return 'yellow'
-    if colour in int_str_colors[4]:
-        return 'purple'
-    if colour in int_str_colors[5]:
-        return 'orange'
+    full_names = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'white', 'teal']
+    for index_item in list(enumerate(colours_in_program)):
+        if colour in index_item:
+            return full_names[index_item[0]]
     return ''
 
 

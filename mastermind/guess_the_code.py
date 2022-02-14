@@ -1,7 +1,7 @@
 import general_functions as gf
 
 
-def ask_user_for_guess(n, colour_range):
+def ask_user_for_guess(slots, colour_range):
     """
     Takes n (int) and colour_range (int) as input. Asks user for a guess. Checks if guess meets the requirements.
     requirements:
@@ -17,14 +17,14 @@ def ask_user_for_guess(n, colour_range):
     guess = list(map(gf.make_lowercase, unrefined_guess))
     len_guess = len(guess)
 
-    if len_guess != n:
+    if len_guess != slots:
         print('Input was not recognized.\n'
               'It looks like you did not give the correct amount of pegs.\n'
-              'We found {} in your answer, but our combination only has {} pegs.\n'
-              'Please review your input of {}.'.format(len_guess, n, guess))
+              'We found {} peg in your answer, but our combination has {} pegs.\n'
+              'Please review your input of {}.\n'.format(len_guess, slots, guess))
         if gf.input_escape_path():
             return False
-        ask_user_for_guess(n, colour_range)
+        ask_user_for_guess(slots, colour_range)
     for colour in guess:
         # checks if the entered values are known colours inside the colour range
         if not gf.check_colour(colour):
@@ -35,12 +35,12 @@ def ask_user_for_guess(n, colour_range):
             if gf.input_escape_path():
                 return False
             # restarts this function to get correct input from user
-            return ask_user_for_guess(n, colour_range)
+            return ask_user_for_guess(slots, colour_range)
 
     return guess
 
 
-def code_creator(n_pegs, colour_range):
+def code_creator(slots, colour_range):
     """
     Takes n_pegs (int) and colour_range (int) as input. Generates a random code n_pegs slots long. All numbers in the
     code are smaller than colour_range. Asks user to guess the code until they guess the code or quit. Prints a
@@ -65,7 +65,7 @@ Please give your guess by entering the first letter of the colour you want to us
 (e.g. "r r b b" (without the quotes) when you want to guess red, red, blue, blue)
 
 Press Enter to continue
-""".format(n_pegs))
+""".format(slots))
 
     print("""
 ##########################################################################################
@@ -76,7 +76,7 @@ Thinking of a code...
 
     # generates a random secret code.
     # Passes the amount of pegs (n_peg) and the amount of colours (colour_range)
-    secret_code = gf.generate_code(n_pegs, colour_range)
+    secret_code = gf.generate_code(slots, colour_range)
 
     print("""
 We thought of something!
@@ -89,7 +89,7 @@ We thought of something!
 
     while guess_ints != secret_code:
         rounds += 1
-        guess = ask_user_for_guess(n_pegs, colour_range)
+        guess = ask_user_for_guess(slots, colour_range)
 
         if not guess:
             # user wants to quit
@@ -113,4 +113,4 @@ We thought of something!
                                                                            rounds))
     # asks user if they want to play again or quit.
     if input('1) Play again\n2) Open selection menu\n') == '1':
-        code_creator(n_pegs, colour_range)
+        code_creator(slots, colour_range)

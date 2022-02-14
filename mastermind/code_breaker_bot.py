@@ -100,13 +100,13 @@ def get_feedback():
     Returns false if the user doesn't enter valid input and choses to quit.
     """
     black_pins = gf.safe_int_input('how many red pins?:\n')
-    if not black_pins and black_pins != 0:
+    if black_pins == -1:
         return False
     if black_pins == 4:
         return 4, 0
 
     white_pins = gf.safe_int_input('how many white pins?:\n')
-    if not white_pins and white_pins != 0:
+    if white_pins == -1:
         return False
 
     return black_pins, white_pins

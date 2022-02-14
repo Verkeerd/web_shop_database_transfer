@@ -30,9 +30,9 @@ Enter your choice:
         elif route == '2':
             code_breaker_bot.code_breaker(slots, colour_range)
         else:
-            confirm = input('You are quitting the program.\n'
+            confirm = input('\nYou are quitting the program.\n'
                             'are you sure?\n'
-                            'enter "yes" to quit\n').strip()
+                            'enter "yes" to quit:\n').strip().lower()
             if confirm == 'yes':
                 # stops the program
                 active = False
