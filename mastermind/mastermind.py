@@ -7,6 +7,7 @@ def begin_mastermind():
     """
     Starts mastermind. Shows information to the user. There are two game-modes. One where you break the code and one
     where you think of a code and our code breaker bot breaks it. Asks for the users choice and starts that game-mode.
+    Ends this function if the user quits.
     """
     active = True
     while active:
@@ -17,9 +18,9 @@ Welcome to mastermind!
 Play mastermind against the computer.
 Break the code or watch our code-breaker bot crack yours!
 
-1) Break the code
+1) Break the Code
 2) Challenge Knuth's Code Breaker
-3) Challenge the Heuristic Code Breaker
+3) Challenge My Heuristic Code Breaker
 4) Quit
 
 Enter your choice:

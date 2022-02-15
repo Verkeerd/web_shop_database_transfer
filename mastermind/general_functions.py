@@ -67,7 +67,7 @@ def all_possible_pins(slots):
 # input
 def input_pin_feedback(slots):
     """
-    takes slots (int) as input. Asks user for feedback when the bot tries to guess their secret code. Asks for the
+    Takes slots (int) as input. Asks user for feedback when the bot tries to guess their secret code. Asks for the
     amount of black and white pins. Returns this information in a tuple (int, int).
     Returns false if the user doesn't enter valid input and quits.
     """
