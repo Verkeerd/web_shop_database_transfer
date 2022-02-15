@@ -64,7 +64,7 @@ routes:
             find the starter with the best (read: lowest) 'worst case scenario' (w.c.s. = the pin outcome of with the
             most possible codes still left over after this new information)
 
-            heuristic algorithm:
+            heuristic algorithm:*
             find the starter with the lowest standard deviance (standard deviance of list with all codes still
             possible after all pin outcomes.)
 
@@ -74,7 +74,7 @@ routes:
             all potential pin feedbacks. The potential pin feedback that generates the most amount of codes is the worst
             case scenario.
 
-            heuristic algorithm:
+            heuristic algorithm:*
             find code with the lowest standard deviance. Does this by calculating the amount of codes left after all
             potential pin feedbacks and putting these values in a list. Calculates the standard deviance of this list.
 
@@ -99,3 +99,9 @@ routes:
 
     - quit (Quit)
     quits the program
+
+
+* motivation heuristic algorithm:
+By calculating the standard deviation of the partition list for every potential code, followed by taking the code with
+the smallest standard deviation, we will chose a code with the most even spread of partitions.
+This ensures that the code will be an information dense guess.
