@@ -108,7 +108,7 @@ Press Enter to continue
     guess = first_guess(possible_codes, slots, possible_pegs)
     # prints the guess in a user-friendly format
     print("""
-##########################################################################################    
+##########################################################################################
 
 Let's begin!
 

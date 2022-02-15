@@ -69,7 +69,7 @@ This is the list with all possible colours:
     - teal (t)
 
 Please give your guess by entering the first letter of the colour you want to use
-(e.g. "r r b b" (without the quotes) when you are playing with 4 slots and you want 
+(e.g. "r r b b" (without the quotes) when you are playing with 4 slots and you want
 to guess red, red, blue, blue)
 
 Press Enter to continue

@@ -16,6 +16,7 @@ def input_int_safe():
         print('Ohh... you broke me. Please give the symbol of a number (i.e. 1, 2, ...)')
         if input('Press 1 to try again! enter anything else to exit the system') == '1':
             return input_int_safe()
+        return None
 
 
 def guess_the_number():

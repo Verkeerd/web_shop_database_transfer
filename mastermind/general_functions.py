@@ -115,7 +115,7 @@ def safe_int_input(message, max_amount=4):
         return wanted_integer
     # if user doesn't enter an integer
     except ValueError:
-        print('Input was not recognised. Please enter an integer.\n(e.g. "4")')
+        print('Input was not recognised. Please enter a number up until {}.\n'.format(max_amount))
         # returns false if the user wants to quit
         if input_escape_path():
             return -1
