@@ -4,6 +4,7 @@ I don't intent to use a gui
 general overview of the program:
 - shell program
 welcomes the user and explains the program. Asks the user what they want to do.
+
 welcome message: """
 Welcome to mastermind!
 
@@ -23,18 +24,18 @@ routes:
     - user breaks the code (Break the code)
     amount of pins: 4; amount of colours: 8
 
-        - generate random combination
+        - generate random code
         use random library
         generate a random list of 4 with integers from 0 up until 7
 
         - ask for guess
         translate colour input to integer
 
-        - compare guess to combination
+        - compare guess to code
             - check red pins
-            returns the amount of identical items on indexes between combination and guess
+            returns the amount of identical items on indexes between code and guess
             - check white pins
-            returns the amount of items that are in the guess and in the combination, but not on the same index
+            returns the amount of items that are in the guess and in the code, but not on the same index
 
             if there are 4 red pins, go to step 'end'
             show red and white pins to user
@@ -48,22 +49,34 @@ routes:
     - computer breaks the code (Challenge our code-breaker bot)
     amount of pins: 4; amount of colours: 6
 
-        - create a list with all possible combinations
-        every combination of [n, n, n, n] where n is 0 to 5 and no two lists are identical
-        0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111 all combinations 0 and 1
-        above without first and last 4 bits for every colour (int) combination (above was with 0 and 1, so also for 0
+        - create a list with all possible codes
+        every code of [n, n, n, n] where n is 0 to 5 and no two lists are identical
+        0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111 all codes 0 and 1
+        above without first and last 4 bits for every colour (int) code (above was with 0 and 1, so also for 0
         and 2, 1 and 2, etc.)
         create list with full four bits (0000, 1111 ... 5555)
-        all lists together are all combinations
+        all lists together are all codes
 
         - choose first guess
         first guess:
-        # source: artikel Universiteit van Groningen
-        find the starter with the best (read: lowest) 'worst case scenario' (w.c.s. = the pin outcome of with the most possible
-        combinations still left over after this new information)
+            # source: artikel Universiteit van Groningen
+            knuth's algorithm:
+            find the starter with the best (read: lowest) 'worst case scenario' (w.c.s. = the pin outcome of with the
+            most possible codes still left over after this new information)
+
+            heuristic algorithm:
+            find the starter with the lowest standard deviance (standard deviance of list with all codes still
+            possible after all pin outcomes.)
 
         all other guesses:
-        find the combination with the best 'worst case scenario'
+            knuth's algorithm:
+            find the code with the lowest 'worst case scenario'. Does this by calculating the amount of codes left after
+            all potential pin feedbacks. The potential pin feedback that generates the most amount of codes is the worst
+            case scenario.
+
+            heuristic algorithm:
+            find code with the lowest standard deviance. Does this by calculating the amount of codes left after all
+            potential pin feedbacks and putting these values in a list. Calculates the standard deviance of this list.
 
         - receive answer
         answer_message: """please read carefully about how to give your answer to our bot:
@@ -72,12 +85,12 @@ routes:
         enter only w or r for every pin you want to answer. The order does not matter!
         (e.g. wwr for two white pins and one red)"""
 
-        - eliminate all impossible combinations based upon received answer
-        eliminate all combinations that would not generate same answer as received answer.
-        for every combination check the following:
-        if compare guess to combination = answer, combination is still valid.
-            - compare guess to combination (see line 26 up until 30)
-        else, combination has to be deleted.
+        - eliminate all impossible codes based upon received answer
+        eliminate all codes that would not generate same answer as received answer.
+        for every code check the following:
+        if compare guess to code = answer, code is still valid.
+            - compare guess to code (see line 26 up until 30)
+        else, code has to be deleted.
 
         - end
         show amount of guesses

@@ -8,10 +8,10 @@ possible_pins = gf.all_possible_pins(slot_amount)
 
 def test_code_breaker(repeat=100):
     """
-    Takes the amount of loops (repeat) (int) as input. Generates a random secret code and prints it. Runs the code
+    Takes the amount of loops to repeat (int) as input. Generates a random secret code and prints it. Runs the code
     breaker bot by generating guesses and feedback until the code is guessed or the bot is out of guesses.
     Prints a message about the outcome after every match. Keeps count of every time bot didn't guess the code and prints
-    this after the game.
+    this after all iterations.
     """
     initial_combination_list = gf.all_possible_codes(4, 6)
     error_runs = 0
@@ -38,7 +38,7 @@ def test_code_breaker(repeat=100):
                 error_runs += 1
                 print('something went wrong')
                 break
-            guess = bot.next_guess(combination_list, combination_list, possible_pins)
+            guess = bot.best_guess(combination_list, combination_list, possible_pins)
             pins = gf.calc_pin_feedback(guess, secret_code)
 
         repeat -= 1

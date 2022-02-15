@@ -8,7 +8,8 @@ def ask_user_for_guess(slots, colour_range):
         - n amount of entries seperated by a whitespace
         - all entries are in the colour list on an index that is lower than colour_range.
     Gives user the option to try again or quit when they give input that does not meet the requirements.
-    Returns the user input when the requirements were met. Else, returns False.
+    Returns the user input when the requirements were met.
+    Returns False otherwise.
     """
     # asks the user for input. strips the input of empty spaces.
     # input is split on spaces. puts these new values in a list.
@@ -42,13 +43,12 @@ def ask_user_for_guess(slots, colour_range):
 
 def code_creator():
     """
-    Takes n_pegs (int) and colour_range (int) as input. Generates a random code n_pegs slots long. All numbers in the
-    code are smaller than colour_range. Asks user to guess the code until they guess the code or quit. Prints a
-    congratulation message and the amount of rounds it took to guess the code when the user guesses it.
+    Generates a random code. Asks user to guess the code until they guess the code or quit. Prints a congratulation
+    message and the amount of rounds it took to guess the code when the user guesses it.
     returns to the selection menu when the user quits.
     """
     #  asks user for amount of slots and amount of colour-options.
-    slots, colour_range = gf.configure_game()
+    slots, colour_range = gf.set_slots_and_colours()
     if not slots:
         gf.goodbye_message()
         return None

@@ -2,14 +2,14 @@ import general_functions as gf
 import statistics
 
 
-def next_guess(codes_to_check, all_codes, possible_pegs):
+def best_guess(codes_to_check, all_codes, possible_pegs):
     """
-    Takes all codes to consider as guess (list) [str]; all potential codes (list) [str] as input (same list except first
-    guess). Calculates the amount of codes left after all possible feedback (combination of white and black pins) that
-    can be received. Checks how many codes would still be possible after every possible pin response, for every code.
-    calculates
-    For every empty pin response, adds a weight of 25 to the result.
-    Returns the code (list) [int] with the lowest worst case scenario.
+    Takes all codes to consider as guess (list) [str]; all potential codes (list) [str]; potential_pins (int) as input.
+    Calculates the amount of codes left after all possible feedback (combination of white and black pins) that can be
+    received. For every code, does the following:
+    For every possible feedback, checks how many codes would be left over after.
+    Puts these values in a list. Calculates the standard deviance of this list.
+    Returns the code (list) [int] that gave the lowest standard deviance.
     """
     print('I\'m thinking about my next move...')
 
@@ -34,26 +34,26 @@ def next_guess(codes_to_check, all_codes, possible_pegs):
 
 def first_guess(all_codes, slots, possible_pegs):
     """
-    Takes all potential codes (list) [str] as input.
-    Calculates the best first guess. All colours can be treated as the same in the first guess, as there is no
-    statistical difference between      blue    blue    blue    red
-    and                                 yellow  yellow  yellow  red
-    Returns the best first guess.
+    Takes all potential codes (list) [str]; slots (int); possible_pegs as input.
+    Calculates the best first guess based on the lowest standard deviance (see best_guess).
+    All colours can be treated as the same in the first guess, as there is no statistical difference
+    between     blue    blue    blue    red
+    and         yellow  yellow  yellow  red
+    Returns the best first guess (list) [int].
     """
     starters = gf.get_starters(slots)
 
-    return next_guess(starters, all_codes, possible_pegs)
+    return best_guess(starters, all_codes, possible_pegs)
 
 
 def heuristic_code_breaker():
     """
-    Takes slots (int) and colour_range (int) as input. Prints information, generates all possible codes slots long with
-    all entries a number between 0 and colour_range. Plays mastermind with the user by guessing the code and asking for
-    feedback. Does this until the bot breaks the code.
-    Finally, gives the user the option to play again or quit.
+    Prints information, generates all possible codes slots long with all entries a number between 0 and colour_range.
+    Plays mastermind with the user by guessing the code and asking for feedback. Does this until the bot breaks the
+    code. Finally, gives the user the option to play again or quit.
     """
     # asks user for amount of slots and amount of colour-options.
-    slots, colour_range = gf.configure_game(max_slots=4, max_colours=6)
+    slots, colour_range = gf.set_slots_and_colours(max_slots=4, max_colours=6)
     possible_pegs = gf.all_possible_pins(slots=slots)
     if not slots:
         gf.goodbye_message()
@@ -132,7 +132,7 @@ My first guess is {}
             return None
 
         # calculates the next best guess (based on the best worst-case scenario)
-        guess = next_guess(possible_codes, possible_codes, possible_pegs)
+        guess = best_guess(possible_codes, possible_codes, possible_pegs)
         print(guess)
         print("My {}nd guess is {}\n".format(rounds, gf.format_colours(guess)))
 

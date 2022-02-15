@@ -6,8 +6,7 @@ import heuristic_code_breaker
 def begin_mastermind():
     """
     Starts mastermind. Shows information to the user. There are two game-modes. One where you break the code and one
-    where you think of a code and our code breaker bot breaks it. Asks for the users choice and starts the appropriate
-    sub-system (game-mode).
+    where you think of a code and our code breaker bot breaks it. Asks for the users choice and starts that game-mode.
     """
     active = True
     while active:

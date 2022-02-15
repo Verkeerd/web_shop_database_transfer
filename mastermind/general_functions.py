@@ -10,7 +10,7 @@ def calc_black_pins(guess, code):
     """
     Takes a secret code (list) [int] and a guess (list) [int] as input.
     Calculates the amount of pegs that are the correct color on the correct spot and deletes these pegs from both lists.
-    Returns the amount of pegs found.
+    Returns the amount of pegs that were found (int).
     """
     amount = 0
     # cycles through the two lists in reversed order
@@ -26,7 +26,8 @@ def calc_black_pins(guess, code):
 def calc_white_pins(guess, code):
     """
     Takes a secret code (list) [int] and a guess (list) [int] as input.
-    Calculates the amount of pegs that are the correct color, but on the wrong spot. Returns the amount of pegs found.
+    Calculates the amount of pegs that are the correct color, but on the wrong spot.
+    Returns the amount of pegs that were found (int).
     """
     amount = 0
     for item in guess:
@@ -52,7 +53,7 @@ def calc_pin_feedback(guess, code):
 
 
 def all_possible_pins(slots):
-    """Returns possible pin outcomes based on the amount of slots."""
+    """Takes slots (int) as input. Returns possible pin outcomes based on the amount of slots (list) [(int, int)]."""
     if slots == 2:
         return [(0, 0), (0, 1), (0, 2), (1, 0)]
     if slots == 3:
@@ -66,9 +67,9 @@ def all_possible_pins(slots):
 # input
 def input_pin_feedback(slots):
     """
-    Asks user for feedback when the bot tries to guess their secret code. Asks for the amount of black and white pins.
-    Returns this information in a tuple (int, int).
-    Returns false if the user doesn't enter valid input and choses to quit.
+    takes slots (int) as input. Asks user for feedback when the bot tries to guess their secret code. Asks for the
+    amount of black and white pins. Returns this information in a tuple (int, int).
+    Returns false if the user doesn't enter valid input and quits.
     """
     black_pins = safe_int_input('how many red pins?:\n', max_amount=slots)
     if black_pins == -1:
@@ -86,7 +87,7 @@ def input_pin_feedback(slots):
 def input_escape_path():
     """
     Gives the user the option to escape from an input field. Use when the user gave the wrong input.
-    Returns True if the user wants to quit. Returns false otherwise.
+    Returns True (bool) if the user quits. Returns false otherwise.
     """
     if input('Enter "end" to stop\n'
              'Enter anything else to try again:\n').strip().lower() == 'end':
@@ -97,10 +98,13 @@ def input_escape_path():
 
 def safe_int_input(message, max_amount=4):
     """
-    Takes a message (str) as input.
+    Takes a message (str); max_amount as input.
     The message is shown to the user. Asks user for an integer input. If the input does not meet the requirements,
     shows the user an error message and gives them the option of quitting or trying again.
-    If the input meets requirements, returns the input as integer.
+    requirements:
+        - must be an integer
+        - must be a number up until max_amount
+    If the input meets requirements, returns the input (int).
     If user quits before giving correct input, returns -1.
     """
     try:
@@ -119,12 +123,13 @@ def safe_int_input(message, max_amount=4):
         return safe_int_input(message)
 
 
-def configure_game(max_slots=6, max_colours=8):
+def set_slots_and_colours(max_slots=6, max_colours=8):
     """
     Takes the max amount of slots (int); max amount of colours (int) as input. Asks the user with how many slots and
-    colours they want to play. Checks if the input is below the respective maximum. If the input does not meet the
-    requirements, asks user if they want to try again or quit. if the input does meet the requirement, returns the given
-    amount of slots and colours. Returns None otherwise.
+    colours they want to play. Checks if the input is below the respective maximum.
+    If the input does not meet the requirements, asks user if they want to try again or quit.
+    If the input does meet the requirement, returns the given amount of slots and colours.
+    Returns None when the user quits.
     """
     slots = safe_int_input('With how many slots do you want to play? (max {})\n'.format(max_slots),
                            max_amount=max_slots)
@@ -134,13 +139,13 @@ def configure_game(max_slots=6, max_colours=8):
         print('You have to use at least 2 slots!')
         if input_escape_path():
             return -1
-        return configure_game(max_slots, max_colours)
+        return set_slots_and_colours(max_slots, max_colours)
 
     if colour_range <= 3:
         print('You have to use at least 4 colours!')
         if input_escape_path():
             return -1
-        return configure_game(max_slots, max_colours)
+        return set_slots_and_colours(max_slots, max_colours)
     return slots, colour_range
 
 
@@ -157,8 +162,9 @@ Returning to the main program...
 
 def format_colours(colour_list):
     """
-    Takes a list with colours (c_list) [int] as input. Looks up the full name of the colour and places those colours in
-    a string with the following format: {colour1}, {colour2}, {colour3}. Returns this string.
+    Takes a list with colours [int] as input. Looks up the full name of the colour and places those colours in a string
+    with the following format: {colour1}, {colour2}, {colour3}.
+    Returns this formatted string with colours (str).
     """
     result = readable_colour(colour_list[0])
     for i in range(1, len(colour_list)):
@@ -171,21 +177,21 @@ def format_colours(colour_list):
 # colours
 def check_colour(colour, colour_range):
     """
-    Takes a colour (str) as input. checks if this colour is allowed by the game. Returns True if this is case, returns
-    False otherwise.
+    Takes a colour (str); colour_range (int) as input. checks if this colour is allowed by the game.
+    Returns True (bool) if the colour is allowed, returns False otherwise.
     """
     return colour in colours_in_program[:colour_range]
 
 
 def colour_to_int(colour):
-    """Takes the first letter of a colour (str) as input. Returns the number used for this colour (in the game)."""
+    """Takes the first letter of a colour (str) as input. Returns the number used for this colour (int)."""
     return colours_in_program.index(colour)
 
 
 def readable_colour(colour):
     """
-    Takes the representation of a colour (first letter or int in use for this colour) as input. Returns the full name of
-    the colour.
+    Takes a symbolic form (first letter or int in use for this colour) of a colour as input.
+    Returns the full name of the colour (str).
     """
     full_names = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'white', 'teal']
     for index_item in list(enumerate(colours_in_program)):
@@ -197,7 +203,11 @@ def readable_colour(colour):
 ########################################################################################################################
 # codes
 def generate_code(slots, colour_range):
-    """Generates a string. The string is n chars long. Every character is a random generated number between 0 and r."""
+    """
+    Takes slots (int) and colour_range (int) as input. Generates a list. The list is slots (from input) items long.
+    Every item is a random generated number between 0 and colour_range.
+    Returns the generated code (list) [int].
+    """
     result = []
     while slots >= 1:
         result.append(random.randrange(0, colour_range))
@@ -210,7 +220,7 @@ def all_possible_codes(slots, colour_range):
     Takes the amount of pegs (int) and colour_range (int) as input.
     Creates a list that contains strings. The strings contain every combination of n * pegs where n represents
     every number from 0 up until colour_range. No two lists are identical.
-    Returns the list (list) [str].
+    Returns the list with all possible codes (list) [str].
     """
     # source: MutantOctopus, (2016, 6 maart). Combinations with repetition in python, where order MATTERS.
     # stackoverflow. Geraadpleegd op 11-2-2022, van
@@ -229,7 +239,7 @@ def all_possible_codes(slots, colour_range):
 
 
 def get_starters(slots):
-    """Returns possible starters based on the amount of slots."""
+    """Takes slots (int) as input. Returns possible starters based on the amount of slots."""
     if slots == 2:
         return ['00', '01']
     if slots == 3:
@@ -245,7 +255,7 @@ def eliminate_codes(guess, all_codes, feedback_pins):
     (int, int) as input.
     Checks for all codes what feedback they would give when you guess the guess code. If the generated feedback is
     the same as feedback_pins, the code is added to a new list.
-    Returns the new list.
+    Returns the list with all possible codes left after the feedback (list) [str].
     """
     # asks for the peg response the guess attempt for every code.
     # if the code responds with different pegs to the guess attempt, the code cannot be the secret code.
@@ -268,10 +278,13 @@ def eliminate_codes(guess, all_codes, feedback_pins):
 ########################################################################################################################
 # other
 def make_lowercase(string):
-    """Takes a string as input. Returns a copy of that string with all lowercase characters."""
+    """Takes a string as input. Returns a copy of that string with all lowercase characters (str)."""
     return string.lower()
 
 
 def str_to_integer_list(code):
-    """Takes a string containing only numbers (e.g. '0011') as input. Turns it into a list with integers."""
+    """
+    Takes a string containing only numbers (e.g. '0011') as input (str). Turns it into a list with integers.
+    Returns this converted list (list) [int].
+    """
     return list(map(int, list(code)))
