@@ -1,13 +1,7 @@
 import general_functions as gf
 
-peg_amount = 4
-colour_amount = 6
 
-possible_pegs = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1),
-                 (2, 2), (3, 0)]
-
-
-def next_guess(codes_to_check, all_codes):
+def next_guess(codes_to_check, all_codes, possible_pegs):
     """
     Takes all codes to consider as guess (list) [str]; all potential codes (list) [str] as input (same list except first
     guess). Calculates the amount of codes left after all possible feedback (combination of white and black pins) that
@@ -18,7 +12,7 @@ def next_guess(codes_to_check, all_codes):
     print('I\'m thinking about my next move...')
 
     best_code = []
-    least_combinations_left = 9999
+    least_combinations_left = 6 ** 4
     # source for this algorithm:
     # Kooi, B. (z.d.). YET ANOTHER MASTERMIND STRATEGY. ICGA Journal, 2-3.
     for code in codes_to_check:
@@ -37,7 +31,7 @@ def next_guess(codes_to_check, all_codes):
     return gf.str_to_integer_list(best_code)
 
 
-def first_guess(all_codes, slots):
+def first_guess(all_codes, slots, possible_pegs):
     """
     Takes all potential codes (list) [str] as input.
     Calculates the best first guess. All colours can be treated as the same in the first guess, as there is no
@@ -47,10 +41,10 @@ def first_guess(all_codes, slots):
     """
     starters = gf.get_starters(slots)
 
-    return next_guess(starters, all_codes)
+    return next_guess(starters, all_codes, possible_pegs)
 
 
-def code_breaker():
+def knuth_code_breaker():
     """
     Takes slots (int) and colour_range (int) as input. Prints information, generates all possible codes slots long with
     all entries a number between 0 and colour_range. Plays mastermind with the user by guessing the code and asking for
@@ -58,15 +52,16 @@ def code_breaker():
     Finally, gives the user the option to play again or quit.
     """
     # asks user for amount of slots and amount of colour-options.
-    slots, colour_range = gf.configure_game_params(max_slots=4, max_colours=6)
+    slots, colour_range = gf.configure_game(max_slots=4, max_colours=6)
+    possible_pegs = gf.all_possible_pins(slots=slots)
     if not slots:
         gf.goodbye_message()
         return None
     # prints information and waits for the user
     input("""
 ##########################################################################################
-Hello!
-I am the Code Breaker. I am excited to be playing against you today!
+Hello! I am Knuth's Code Breaker.
+I am excited to be playing against you today!
 
 First I'll explain the rules:
 
@@ -110,7 +105,7 @@ Press Enter to continue
 
     rounds = 1
 
-    guess = first_guess(possible_codes, slots)
+    guess = first_guess(possible_codes, slots, possible_pegs)
     # prints the guess in a user-friendly format
     print("""
 ##########################################################################################    
@@ -136,7 +131,7 @@ My first guess is {}
             return None
 
         # calculates the next best guess (based on the best worst-case scenario)
-        guess = next_guess(possible_codes, possible_codes)
+        guess = next_guess(possible_codes, possible_codes, possible_pegs)
         print("My {}nd guess is {}\n".format(rounds, gf.format_colours(guess)))
 
         # asks user for feedback
@@ -155,4 +150,4 @@ It took me {} rounds to guess it.
 1) Play again
 2) Open selection menu
 """.format(gf.format_colours(guess), rounds)).strip() == '1':
-        code_breaker()
+        knuth_code_breaker()

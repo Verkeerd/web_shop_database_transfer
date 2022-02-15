@@ -1,5 +1,6 @@
 import guess_the_code
 import code_breaker_bot
+import heuristic_code_breaker
 
 
 def begin_mastermind():
@@ -18,15 +19,18 @@ Play mastermind against the computer.
 Break the code or watch our code-breaker bot crack yours!
 
 1) Break the code
-2) Challenge our code-breaker bot
-3) Quit
+2) Challenge Knuth's Code Breaker
+3) Challenge the Heuristic Code Breaker
+4) Quit
 
 Enter your choice: 
 """).strip()
         if route == '1':
             guess_the_code.code_creator()
         elif route == '2':
-            code_breaker_bot.code_breaker()
+            code_breaker_bot.knuth_code_breaker()
+        elif route == '3':
+            heuristic_code_breaker.heuristic_code_breaker()
         else:
             confirm = input('\nYou are quitting the program.\n'
                             'are you sure?\n'

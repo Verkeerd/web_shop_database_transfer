@@ -48,12 +48,12 @@ def code_creator():
     returns to the selection menu when the user quits.
     """
     #  asks user for amount of slots and amount of colour-options.
-    slots, colour_range = gf.configure_game_params()
+    slots, colour_range = gf.configure_game()
     if not slots:
         gf.goodbye_message()
         return None
     # quits the program if the user gives "end" as input
-    input("""
+    print("""
 ##########################################################################################
 You have chosen to Crack the Code!
 The code is {} pegs long.

@@ -51,6 +51,16 @@ def calc_pin_feedback(guess, code):
     return black_pins, white_pins
 
 
+def all_possible_pins(slots):
+    """Returns possible pin outcomes based on the amount of slots."""
+    if slots == 2:
+        return [(0, 0), (0, 1), (0, 2), (1, 0)]
+    if slots == 3:
+        return [(0, 0), (0, 1), (0, 2), (0, 3), (1, 0), (2, 0), (1, 1), (1, 2), (2, 1)]
+    if slots == 4:
+        return [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (3, 0)]
+
+
 ########################################################################################################################
 # input
 def input_pin_feedback(slots):
@@ -109,7 +119,7 @@ def safe_int_input(message, max_amount=4):
         return safe_int_input(message)
 
 
-def configure_game_params(max_slots=6, max_colours=8):
+def configure_game(max_slots=6, max_colours=8):
     """
     Takes the max amount of slots (int); max amount of colours (int) as input. Asks the user with how many slots and
     colours they want to play. Checks if the input is below the respective maximum. If the input does not meet the
@@ -124,13 +134,13 @@ def configure_game_params(max_slots=6, max_colours=8):
         print('You have to use at least 2 slots!')
         if input_escape_path():
             return -1
-        return configure_game_params(max_slots, max_colours)
+        return configure_game(max_slots, max_colours)
 
     if colour_range <= 3:
         print('You have to use at least 4 colours!')
         if input_escape_path():
             return -1
-        return configure_game_params(max_slots, max_colours)
+        return configure_game(max_slots, max_colours)
     return slots, colour_range
 
 
@@ -220,6 +230,7 @@ def all_possible_codes(slots, colour_range):
 
 
 def get_starters(slots):
+    """Returns possible starters based on the amount of slots."""
     if slots == 2:
         return ['00', '01']
     if slots == 3:
