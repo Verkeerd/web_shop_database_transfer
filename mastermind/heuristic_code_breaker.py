@@ -61,7 +61,7 @@ def heuristic_code_breaker():
     # prints information and waits for the user
     input("""
 ##########################################################################################
-Hello! I am the Heuristic Code Breaker. 
+Hello! I am the Heuristic Code Breaker.
 I am excited to be playing against you today!
 
 First I'll explain the rules:
@@ -109,7 +109,7 @@ Press Enter to continue
     guess = first_guess(possible_codes, slots, possible_pegs)
     # prints the guess in a user-friendly format
     print("""
-##########################################################################################    
+##########################################################################################
 
 Let's begin!
 

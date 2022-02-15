@@ -23,7 +23,7 @@ Break the code or watch our code-breaker bot crack yours!
 3) Challenge the Heuristic Code Breaker
 4) Quit
 
-Enter your choice: 
+Enter your choice:
 """).strip()
         if route == '1':
             guess_the_code.code_creator()

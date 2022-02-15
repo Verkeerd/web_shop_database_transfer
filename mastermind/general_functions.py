@@ -59,6 +59,7 @@ def all_possible_pins(slots):
         return [(0, 0), (0, 1), (0, 2), (0, 3), (1, 0), (2, 0), (1, 1), (1, 2), (2, 1)]
     if slots == 4:
         return [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (3, 0)]
+    return None
 
 
 ########################################################################################################################
@@ -107,8 +108,7 @@ def safe_int_input(message, max_amount=4):
         if wanted_integer > max_amount:
             print('The maximum amount allowed is {}.\n'.format(max_amount))
             raise ValueError
-        else:
-            return wanted_integer
+        return wanted_integer
     # if user doesn't enter an integer
     except ValueError:
         print('Input was not recognised. Please enter an integer.\n(e.g. "4")')
@@ -129,7 +129,7 @@ def configure_game(max_slots=6, max_colours=8):
     slots = safe_int_input('With how many slots do you want to play? (max {})\n'.format(max_slots),
                            max_amount=max_slots)
     colour_range = safe_int_input('With how many colours do you want to play? (max {})\n'.format(max_colours),
-                                      max_amount=max_colours)
+                                  max_amount=max_colours)
     if slots <= 1:
         print('You have to use at least 2 slots!')
         if input_escape_path():
@@ -220,7 +220,6 @@ def all_possible_codes(slots, colour_range):
     # The string contain every combination of [n * slots] where n is 0 to colour_range
     # No two lists are identical.
 
-
     # iter_colours is a string with all integers from 0 until colour_range
     # (e.g. for colour_range 6: '012345')
     iter_colours = ''
@@ -237,6 +236,7 @@ def get_starters(slots):
         return ['000', '001', '012']
     if slots == 4:
         return ['0000', '0001', '0011', '0012', '0123']
+    return None
 
 
 def eliminate_codes(guess, all_codes, feedback_pins):
