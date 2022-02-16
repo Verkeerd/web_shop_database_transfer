@@ -1,20 +1,10 @@
-from pymongo import MongoClient
+import pymongo
 
-client = MongoClient('localhost', 27017)
+client = pymongo.MongoClient("mongodb+srv://verkeerd:uhsxqz%25%23BD078@projectrecomendationeng.ogvrf.mongodb.net/"
+                             "projectRecomendationEngine?retryWrites=true&w=majority")
 
-local_database = client['local']
-collection_names = local_database.list_collection_names()
+project_db = client.projectRecomendationEngine
 
-sample_database = client['collection-2--8667220554415667166']
+collection_sessions = project_db.sessions
 
-print(local_database)
-
-print(collection_names)
-
-
-print(sample_database.list_collection_names())
-
-sessions = local_database.sessions.posts
-print(sessions)
-
-print(sessions.find_one())
+print(collection_sessions.find_one())
