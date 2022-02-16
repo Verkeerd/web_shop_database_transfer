@@ -1,4 +1,4 @@
-import general_functions as gf
+import mastermind_functions
 
 
 def best_guess(codes_to_check, all_codes, potential_pins):
@@ -18,7 +18,7 @@ def best_guess(codes_to_check, all_codes, potential_pins):
     for code in codes_to_check:
         worst_case = 0
         for peg_outcome in potential_pins:
-            codes_left_over = len(gf.eliminate_codes(list(code), all_codes, peg_outcome))
+            codes_left_over = len(mastermind_functions.eliminate_codes(list(code), all_codes, peg_outcome))
             # updates worst_case if a peg_outcome a with higher amount of codes left over after is found.
             if codes_left_over > worst_case:
                 worst_case = codes_left_over
@@ -40,22 +40,22 @@ def first_guess(all_codes, slots, potential_pins):
     and             yellow  yellow  yellow  red
     Returns the best first guess (list) [int].
     """
-    starters = gf.get_starters(slots)
+    starters = mastermind_functions.get_starters(slots)
 
     return best_guess(starters, all_codes, potential_pins)
 
 
 def knuth_code_breaker():
     """
-    Prints information, generates all possible codes slots long with all entries a number between 0 and colour_range.
-    Plays mastermind with the user by guessing the code and asking for feedback. Does this until the bot breaks the
-    code. Finally, gives the user the option to play again or quit.
+    Prints information; generates all possible codes slots long with all entries a number between 0 and colour_range.
+    Plays mastermind with the user by guessing the code and asking for feedback. Continues playing until the bot breaks
+    the code. Finally, gives the user the option to play again or quit.
     """
     # asks user for amount of slots and amount of colour-options.
-    slots, colour_range = gf.set_slots_and_colours(max_slots=4, max_colours=6)
-    possible_pegs = gf.all_possible_pins(slots=slots)
+    slots, colour_range = mastermind_functions.set_slots_and_colours(max_slots=4, max_colours=6)
+    possible_pegs = mastermind_functions.all_possible_pins(slots=slots)
     if not slots:
-        gf.goodbye_message()
+        mastermind_functions.goodbye_message()
         return None
     # prints information and waits for the user
     input("""
@@ -101,7 +101,7 @@ Remember it well, or write it down somewhere.
 
 Press Enter to start!
 """)
-    possible_codes = gf.all_possible_codes(slots=slots, colour_range=colour_range)
+    possible_codes = mastermind_functions.all_possible_codes(slots=slots, colour_range=colour_range)
 
     rounds = 1
 
@@ -113,18 +113,18 @@ Press Enter to start!
 Let's begin!
 
 My first guess is {}
-""".format(gf.format_colours(guess)))
+""".format(mastermind_functions.format_colours(guess)))
 
     # asks user for feedback.
-    feedback_pins = gf.input_pin_feedback(slots)
+    feedback_pins = mastermind_functions.input_pin_feedback(slots)
     if not feedback_pins:
-        gf.goodbye_message()
+        mastermind_functions.goodbye_message()
         return None
 
     while feedback_pins != (slots, 0):
         rounds += 1
         # eliminates all combination no longer possible with the provided feedback
-        possible_codes = gf.eliminate_codes(guess=guess, all_codes=possible_codes, feedback_pins=feedback_pins)
+        possible_codes = mastermind_functions.eliminate_codes(guess=guess, all_codes=possible_codes, feedback_pins=feedback_pins)
 
         if not possible_codes:
             print('I\'m all out of guesses!\nPlease review your feedback to make sure you didn\'t make a mistake.')
@@ -132,12 +132,12 @@ My first guess is {}
 
         # calculates the next best guess (based on the best worst-case scenario)
         guess = best_guess(possible_codes, possible_codes, possible_pegs)
-        print("My {}nd guess is {}\n".format(rounds, gf.format_colours(guess)))
+        print("My {}nd guess is {}\n".format(rounds, mastermind_functions.format_colours(guess)))
 
         # asks user for feedback
-        feedback_pins = gf.input_pin_feedback(slots)
+        feedback_pins = mastermind_functions.input_pin_feedback(slots)
         if not feedback_pins:
-            gf.goodbye_message()
+            mastermind_functions.goodbye_message()
             return None
 
     # program quits automatically if user doesn't want to continue
@@ -149,5 +149,5 @@ It took me {} rounds to guess it.
 ##########################################################################################
 1) Play again
 2) Open selection menu
-""".format(gf.format_colours(guess), rounds)).strip() == '1':
+""".format(mastermind_functions.format_colours(guess), rounds)).strip() == '1':
         knuth_code_breaker()

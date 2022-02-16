@@ -1,5 +1,5 @@
-import random
-import itertools
+from random import randrange
+from itertools import product as iter_product
 
 colours_in_program = ['r', 'b', 'g', 'y', 'p', 'o', 'w', 't']
 
@@ -9,7 +9,8 @@ colours_in_program = ['r', 'b', 'g', 'y', 'p', 'o', 'w', 't']
 def calc_black_pins(guess, code):
     """
     Takes a secret code (list) [int] and a guess (list) [int] as input.
-    Calculates the amount of pegs that are the correct color on the correct spot and deletes these pegs from both lists.
+    Calculates the amount of pegs that are the correct color on the correct spot. deletes all found pegs from both the
+    guess and the code.
     Returns the amount of pegs that were found (int).
     """
     amount = 0
@@ -26,7 +27,8 @@ def calc_black_pins(guess, code):
 def calc_white_pins(guess, code):
     """
     Takes a secret code (list) [int] and a guess (list) [int] as input.
-    Calculates the amount of pegs that are the correct color, but on the wrong spot.
+    Calculates the amount of pegs that are the correct color, but on the wrong spot. Deletes all found pegs from the
+    code.
     Returns the amount of pegs that were found (int).
     """
     amount = 0
@@ -44,6 +46,8 @@ def calc_pin_feedback(guess, code):
     Calculates the amount of black pegs (correct colour on correct spot) and white pegs (correct colour on wrong spot).
     Returns black and white pegs in a tuple (int, int).
     """
+    # Calc_black_pins and calc_white_pins both change lists.
+    # Copies guess and code so the lists are not changed outside the scope of this function.
     guess_copy = guess.copy()
     code_copy = code.copy()
     black_pins = calc_black_pins(guess_copy, code_copy)
@@ -211,7 +215,7 @@ def generate_code(slots, colour_range):
     """
     result = []
     while slots >= 1:
-        result.append(random.randrange(0, colour_range))
+        result.append(randrange(0, colour_range))
         slots -= 1
     return result
 
@@ -228,10 +232,9 @@ def all_possible_codes(slots, colour_range):
     # source: MutantOctopus, (2016, 6 maart). Combinations with repetition in python, where order MATTERS.
     # stackoverflow. Geraadpleegd op 11-2-2022, van
     # https://stackoverflow.com/questions/35822627/combinations-with-repetition-in-python-where-order-matters
-
     iter_colours = [i for i in range(colour_range)]
 
-    return list(itertools.product(iter_colours, repeat=slots))
+    return list(iter_product(iter_colours, repeat=slots))
 
 def get_starters(slots):
     """Takes slots (int) as input. Returns possible starters based on the amount of slots (tuple)."""
