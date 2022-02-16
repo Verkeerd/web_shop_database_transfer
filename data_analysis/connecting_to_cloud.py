@@ -5,6 +5,6 @@ client = pymongo.MongoClient("mongodb+srv://verkeerd:uhsxqz%25%23BD078@projectre
 
 project_db = client.projectRecomendationEngine
 
-collection_sessions = project_db.sessions
+collection_sessions = project_db.session_collection
 
 print(collection_sessions.find_one())
