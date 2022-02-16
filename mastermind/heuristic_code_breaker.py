@@ -20,7 +20,7 @@ def best_guess(codes_to_check, all_codes, possible_pegs):
         list_codes_left_over = []
 
         for peg_outcome in possible_pegs:
-            codes_left_over = len(gf.eliminate_codes(gf.str_to_integer_list(code), all_codes, peg_outcome))
+            codes_left_over = len(gf.eliminate_codes(list(code), all_codes, peg_outcome))
             list_codes_left_over.append(codes_left_over)
         code_score = statistics.stdev(list_codes_left_over)
         # if the worst-case of code is better than previously recorded best worst-case
@@ -29,7 +29,7 @@ def best_guess(codes_to_check, all_codes, possible_pegs):
             best_code = code
             best_score = code_score
 
-    return gf.str_to_integer_list(best_code)
+    return list(best_code)
 
 
 def first_guess(all_codes, slots, possible_pegs):

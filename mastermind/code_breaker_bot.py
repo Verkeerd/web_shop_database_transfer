@@ -18,7 +18,7 @@ def best_guess(codes_to_check, all_codes, potential_pins):
     for code in codes_to_check:
         worst_case = 0
         for peg_outcome in potential_pins:
-            codes_left_over = len(gf.eliminate_codes(gf.str_to_integer_list(code), all_codes, peg_outcome))
+            codes_left_over = len(gf.eliminate_codes(list(code), all_codes, peg_outcome))
             # updates worst_case if a peg_outcome a with higher amount of codes left over after is found.
             if codes_left_over > worst_case:
                 worst_case = codes_left_over
@@ -28,7 +28,7 @@ def best_guess(codes_to_check, all_codes, potential_pins):
             best_code = code
             least_combinations_left = worst_case
 
-    return gf.str_to_integer_list(best_code)
+    return list(best_code)
 
 
 def first_guess(all_codes, slots, potential_pins):

@@ -131,6 +131,7 @@ def set_slots_and_colours(max_slots=6, max_colours=8):
     If the input does meet the requirement, returns the given amount of slots and colours.
     Returns None when the user quits.
     """
+    print('You can choose with how many slots and colours you want to play! ')
     slots = safe_int_input('With how many slots do you want to play? (max {})\n'.format(max_slots),
                            max_amount=max_slots)
     colour_range = safe_int_input('With how many colours do you want to play? (max {})\n'.format(max_colours),
@@ -230,22 +231,19 @@ def all_possible_codes(slots, colour_range):
     # The string contain every combination of [n * slots] where n is 0 to colour_range
     # No two lists are identical.
 
-    # iter_colours is a string with all integers from 0 until colour_range
-    # (e.g. for colour_range 6: '012345')
-    iter_colours = ''
-    for i in range(0, colour_range):
-        iter_colours += str(i)
-    return list(itertools.product(iter_colours, repeat=slots))
+    # iter_colours is a list with all integers from 0 until (not including) colour_range
+    iter_colours = [i for i in range(colour_range)]
 
+    return list(itertools.product(iter_colours, repeat=slots))
 
 def get_starters(slots):
     """Takes slots (int) as input. Returns possible starters based on the amount of slots."""
     if slots == 2:
-        return ['00', '01']
+        return [(0,0), (0,1)]
     if slots == 3:
-        return ['000', '001', '012']
+        return [(0,0,0), (0,0,1), (0,1,2)]
     if slots == 4:
-        return ['0000', '0001', '0011', '0012', '0123']
+        return [(0,0,0,0), (0,0,0,1), (0,0,1,1), (0,0,1,2), (0,1,2,3)]
     return None
 
 
@@ -264,7 +262,7 @@ def eliminate_codes(guess, all_codes, feedback_pins):
     for code in all_codes:
         # When black and white pins are calculated, a list containing integers is needed, so the code have to be
         # converted before feedback can be collected.
-        code = str_to_integer_list(code)
+        code = list(code)
 
         peg_response = calc_pin_feedback(guess=guess, code=code)
 
@@ -280,11 +278,3 @@ def eliminate_codes(guess, all_codes, feedback_pins):
 def make_lowercase(string):
     """Takes a string as input. Returns a copy of that string with all lowercase characters (str)."""
     return string.lower()
-
-
-def str_to_integer_list(code):
-    """
-    Takes a string containing only numbers (e.g. '0011') as input (str). Turns it into a list with integers.
-    Returns this converted list (list) [int].
-    """
-    return list(map(int, list(code)))
