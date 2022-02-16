@@ -57,7 +57,7 @@ def heuristic_code_breaker():
     # asks user for amount of slots and amount of colour-options.
     slots, colour_range = mastermind_functions.set_slots_and_colours(max_slots=4, max_colours=6)
     possible_pegs = mastermind_functions.all_possible_pins(slots=slots)
-    if not slots:
+    if not colour_range:
         mastermind_functions.goodbye_message()
         return None
 

@@ -1,5 +1,5 @@
 import guess_the_code
-import code_breaker_bot
+import knuths_code_breaker
 import heuristic_code_breaker
 
 
@@ -28,7 +28,7 @@ Enter your choice:
         if route == '1':
             guess_the_code.code_creator()
         elif route == '2':
-            code_breaker_bot.knuth_code_breaker()
+            knuths_code_breaker.knuth_code_breaker()
         elif route == '3':
             heuristic_code_breaker.heuristic_code_breaker()
         else:

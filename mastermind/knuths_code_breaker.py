@@ -1,7 +1,7 @@
 import mastermind_functions
 
 
-def best_guess(codes_to_check, all_codes, potential_pins):
+def knuth_best_guess(codes_to_check, all_codes, potential_pins):
     """
     Takes all codes to consider as guess (list) [(int)]; all potential codes (list) [(int)]; potential_pins [(int, int)]0
     as input. Calculates the amount of codes left after all possible feedback (combination of white and black pins) that
@@ -31,7 +31,7 @@ def best_guess(codes_to_check, all_codes, potential_pins):
     return list(best_code)
 
 
-def first_guess(all_codes, slots, potential_pins):
+def knuth_first_guess(all_codes, slots, potential_pins):
     """
     Takes all potential codes (list) [(int)]; slots (int); possible_pegs (list) [(int, int)] as input.
     Calculates the best first guess based on the lowest worst-case scenario (see best_guess).
@@ -42,7 +42,7 @@ def first_guess(all_codes, slots, potential_pins):
     """
     starters = mastermind_functions.get_starters(slots)
 
-    return best_guess(starters, all_codes, potential_pins)
+    return knuth_best_guess(starters, all_codes, potential_pins)
 
 
 def knuth_code_breaker():
@@ -54,7 +54,7 @@ def knuth_code_breaker():
     # asks user for amount of slots and amount of colour-options.
     slots, colour_range = mastermind_functions.set_slots_and_colours(max_slots=4, max_colours=6)
     possible_pegs = mastermind_functions.all_possible_pins(slots=slots)
-    if not slots:
+    if not colour_range:
         mastermind_functions.goodbye_message()
         return None
     # prints information and waits for the user
@@ -105,7 +105,7 @@ Press Enter to start!
 
     rounds = 1
 
-    guess = first_guess(possible_codes, slots, possible_pegs)
+    guess = knuth_first_guess(possible_codes, slots, possible_pegs)
     # prints the guess in a user-friendly format
     print("""
 ##########################################################################################
@@ -131,7 +131,7 @@ My first guess is {}
             return None
 
         # calculates the next best guess (based on the best worst-case scenario)
-        guess = best_guess(possible_codes, possible_codes, possible_pegs)
+        guess = knuth_best_guess(possible_codes, possible_codes, possible_pegs)
         print("My {}nd guess is {}\n".format(rounds, mastermind_functions.format_colours(guess)))
 
         # asks user for feedback

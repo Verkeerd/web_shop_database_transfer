@@ -224,15 +224,15 @@ def all_possible_codes(slots, colour_range):
     """
     Takes the amount of pegs (int) and colour_range (int) as input.
     Creates a list that contains tuples.
-    The tuples have slots amount of elements, where every element can be 0 to colour_range. No two tuples are identical.
-    The place of the elements matters. Elements can repeat.
+    The tuples have slots amount of elements, where every element is an integer from 0 to colour_range. No two tuples
+    are identical. The place of the elements matters. Elements can repeat.
     The list contains all possible tuples.
     Returns the list with all possible codes (list) [(int)].
     """
     # source: MutantOctopus, (2016, 6 maart). Combinations with repetition in python, where order MATTERS.
     # stackoverflow. Geraadpleegd op 11-2-2022, van
     # https://stackoverflow.com/questions/35822627/combinations-with-repetition-in-python-where-order-matters
-    iter_colours = [i for i in range(colour_range)]
+    iter_colours = list(range(colour_range))
 
     return list(iter_product(iter_colours, repeat=slots))
 

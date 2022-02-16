@@ -1,5 +1,5 @@
 import mastermind_functions
-import code_breaker_bot as bot
+import knuths_code_breaker as knuth
 
 slot_amount = 4
 colour_amount = 6
@@ -25,7 +25,7 @@ def test_code_breaker(repeat=100):
         print('The secret code is: {}'.format(secret_code))
 
         # breaks the secret code with the code-breaker bot
-        guess = bot.first_guess(combination_list, slot_amount, possible_pins)
+        guess = knuth.knuth_first_guess(combination_list, slot_amount, possible_pins)
         pins = mastermind_functions.calc_pin_feedback(guess=guess, code=secret_code)
 
         while pins != (4, 0):
@@ -38,7 +38,7 @@ def test_code_breaker(repeat=100):
                 error_runs += 1
                 print('something went wrong')
                 break
-            guess = bot.best_guess(combination_list, combination_list, possible_pins)
+            guess = knuth.knuth_best_guess(combination_list, combination_list, possible_pins)
             pins = mastermind_functions.calc_pin_feedback(guess, secret_code)
 
         repeat -= 1
