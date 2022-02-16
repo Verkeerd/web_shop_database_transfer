@@ -105,7 +105,7 @@ def safe_int_input(message, max_amount=4):
         - must be an integer
         - must be a number up until max_amount
     If the input meets requirements, returns the input (int).
-    If user quits before giving correct input, returns -1.
+    If user quits before giving correct input, returns -1 (int).
     """
     try:
         wanted_integer = int(input(message).strip())
@@ -128,7 +128,7 @@ def set_slots_and_colours(max_slots=6, max_colours=8):
     Takes the max amount of slots (int); max amount of colours (int) as input. Asks the user with how many slots and
     colours they want to play. Checks if the input is below the respective maximum.
     If the input does not meet the requirements, asks user if they want to try again or quit.
-    If the input does meet the requirement, returns the given amount of slots and colours.
+    If the input does meet the requirement, returns the given amount of slots and colours (tuple) (int, int).
     Returns None when the user quits.
     """
     print('You can choose with how many slots and colours you want to play! ')
@@ -219,25 +219,22 @@ def generate_code(slots, colour_range):
 def all_possible_codes(slots, colour_range):
     """
     Takes the amount of pegs (int) and colour_range (int) as input.
-    Creates a list that contains strings. The strings contain every combination of n * pegs where n represents
-    every number from 0 up until colour_range. No two lists are identical.
-    Returns the list with all possible codes (list) [str].
+    Creates a list that contains tuples.
+    The tuples have slots amount of elements, where every element can be 0 to colour_range. No two tuples are identical.
+    The place of the elements matters. Elements can repeat.
+    The list contains all possible tuples.
+    Returns the list with all possible codes (list) [(int)].
     """
     # source: MutantOctopus, (2016, 6 maart). Combinations with repetition in python, where order MATTERS.
     # stackoverflow. Geraadpleegd op 11-2-2022, van
     # https://stackoverflow.com/questions/35822627/combinations-with-repetition-in-python-where-order-matters
 
-    # creates a list that contains strings.
-    # The string contain every combination of [n * slots] where n is 0 to colour_range
-    # No two lists are identical.
-
-    # iter_colours is a list with all integers from 0 until (not including) colour_range
     iter_colours = [i for i in range(colour_range)]
 
     return list(itertools.product(iter_colours, repeat=slots))
 
 def get_starters(slots):
-    """Takes slots (int) as input. Returns possible starters based on the amount of slots."""
+    """Takes slots (int) as input. Returns possible starters based on the amount of slots (tuple)."""
     if slots == 2:
         return [(0,0), (0,1)]
     if slots == 3:
@@ -249,11 +246,11 @@ def get_starters(slots):
 
 def eliminate_codes(guess, all_codes, feedback_pins):
     """
-    Takes all codes left over before the most recent guess (list) [str]; a guess (list) [int]; feedback_pins (tuple)
+    Takes all codes left over before the most recent guess (list) [(int)]; a guess (list) [int]; feedback_pins (tuple)
     (int, int) as input.
     Checks for all codes what feedback they would give when you guess the guess code. If the generated feedback is
     the same as feedback_pins, the code is added to a new list.
-    Returns the list with all possible codes left after the feedback (list) [str].
+    Returns the list with all possible codes left after the feedback (list) [(int)].
     """
     # asks for the peg response the guess attempt for every code.
     # if the code responds with different pegs to the guess attempt, the code cannot be the secret code.

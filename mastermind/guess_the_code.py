@@ -8,7 +8,7 @@ def ask_user_for_guess(slots, colour_range):
         - n amount of entries seperated by a whitespace
         - all entries are in the colour list on an index that is lower than colour_range.
     Gives user the option to try again or quit when they give input that does not meet the requirements.
-    Returns the user input when the requirements were met.
+    Returns the user's input when the requirements were met.
     Returns False otherwise.
     """
     # asks the user for input. strips the input of empty spaces.
@@ -52,7 +52,7 @@ def code_creator():
     if not slots:
         gf.goodbye_message()
         return None
-    # quits the program if the user gives "end" as input
+
     print("""
 ##########################################################################################
 You have chosen to Crack the Code!
@@ -71,8 +71,6 @@ This is the list with all possible colours:
 Please give your guess by entering the first letter of the colour you want to use
 (e.g. "r r b b" (without the quotes) when you are playing with 4 slots and you want
 to guess red, red, blue, blue)
-
-Press Enter to continue
 """.format(slots))
 
     print("""

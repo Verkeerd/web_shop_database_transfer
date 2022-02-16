@@ -2,11 +2,11 @@ import general_functions as gf
 import statistics
 
 
-def best_guess(codes_to_check, all_codes, possible_pegs):
+def best_guess(guesses, all_codes, possible_pegs):
     """
-    Takes all codes to consider as guess (list) [str]; all potential codes (list) [str]; potential_pins (int) as input.
-    Calculates the amount of codes left after all possible feedback (combination of white and black pins) that can be
-    received. For every code, does the following:
+    Takes all codes to consider as guess (list) [(int)]; all potential codes (list) [(int)]; potential_pins (int) as
+    input. Calculates the amount of codes left after all possible feedback (combination of white and black pins) that
+    can be received. For every guess, does the following:
     For every possible feedback, checks how many codes would be left over after.
     Puts these values in a list. Calculates the standard deviance of this list.
     Returns the code (list) [int] that gave the lowest standard deviance.
@@ -16,15 +16,16 @@ def best_guess(codes_to_check, all_codes, possible_pegs):
     best_code = []
     best_score = 6 ** 4
 
-    for code in codes_to_check:
+    for code in guesses:
         list_codes_left_over = []
 
         for peg_outcome in possible_pegs:
             codes_left_over = len(gf.eliminate_codes(list(code), all_codes, peg_outcome))
             list_codes_left_over.append(codes_left_over)
+
         code_score = statistics.stdev(list_codes_left_over)
-        # if the worst-case of code is better than previously recorded best worst-case
-        # records new best worst-case. records new best code.
+        # if the standard deviance of the code is lower than previously recorded standard deviance.
+        # records new lowest standard deviance. records new best code.
         if code_score < best_score:
             best_code = code
             best_score = code_score
@@ -34,7 +35,7 @@ def best_guess(codes_to_check, all_codes, possible_pegs):
 
 def first_guess(all_codes, slots, possible_pegs):
     """
-    Takes all potential codes (list) [str]; slots (int); possible_pegs as input.
+    Takes all potential codes (list) [(int)]; slots (int); possible_pegs (list) [(int)] as input.
     Calculates the best first guess based on the lowest standard deviance (see best_guess).
     All colours can be treated as the same in the first guess, as there is no statistical difference
     between     blue    blue    blue    red
@@ -58,7 +59,7 @@ def heuristic_code_breaker():
     if not slots:
         gf.goodbye_message()
         return None
-    # prints information and waits for the user
+
     input("""
 ##########################################################################################
 Hello! I am the Heuristic Code Breaker.
@@ -100,7 +101,7 @@ https://www.ultraboardgames.com/mastermind/game-rules.php
 Please create a secret code!
 Remember it well, or write it down somewhere.
 
-Press Enter to continue
+Press Enter to start!
 """)
     possible_codes = gf.all_possible_codes(slots=slots, colour_range=colour_range)
 

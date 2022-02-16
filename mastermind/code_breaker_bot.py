@@ -3,9 +3,9 @@ import general_functions as gf
 
 def best_guess(codes_to_check, all_codes, potential_pins):
     """
-    Takes all codes to consider as guess (list) [str]; all potential codes (list) [str]; potential_pins (int) as input.
-    Calculates the amount of codes left after all possible feedback (combination of white and black pins) that can be
-    received. Keeps track of the worst case scenario for every considered guess
+    Takes all codes to consider as guess (list) [(int)]; all potential codes (list) [(int)]; potential_pins [(int, int)]0
+    as input. Calculates the amount of codes left after all possible feedback (combination of white and black pins) that
+    can be received. Keeps track of the worst case scenario for every considered guess
     (worst case scenario = the highest amount of codes left over).
     Returns the code (list) [int] with the lowest worst case scenario.
     """
@@ -14,7 +14,7 @@ def best_guess(codes_to_check, all_codes, potential_pins):
     best_code = []
     least_combinations_left = 6 ** 4
     # source for this algorithm:
-    # Kooi, B. (z.d.). YET ANOTHER MASTERMIND STRATEGY. ICGA Journal, 2-3.
+    # Kooi, B. (z.d.). YET ANOTHER MASTERMIND STRATEGY. ICGA Journal, 2-3 (hoofdstuk 2: 2.1 - 2.3).
     for code in codes_to_check:
         worst_case = 0
         for peg_outcome in potential_pins:
@@ -22,7 +22,7 @@ def best_guess(codes_to_check, all_codes, potential_pins):
             # updates worst_case if a peg_outcome a with higher amount of codes left over after is found.
             if codes_left_over > worst_case:
                 worst_case = codes_left_over
-        # if the worst-case of code is better than previously recorded best worst-case
+        # if the worst-case of code is lower than previously recorded best worst-case
         # records new best worst-case. records new best code.
         if worst_case < least_combinations_left:
             best_code = code
@@ -33,11 +33,11 @@ def best_guess(codes_to_check, all_codes, potential_pins):
 
 def first_guess(all_codes, slots, potential_pins):
     """
-    Takes all potential codes (list) [str]; slots (int); possible_pegs as input.
+    Takes all potential codes (list) [(int)]; slots (int); possible_pegs (list) [(int, int)] as input.
     Calculates the best first guess based on the lowest worst-case scenario (see best_guess).
     All colours can be treated as the same in the first guess, as there is no statistical difference
-    between     blue    blue    blue    red
-    and         yellow  yellow  yellow  red
+    between (e.g.)  blue    blue    blue    red
+    and             yellow  yellow  yellow  red
     Returns the best first guess (list) [int].
     """
     starters = gf.get_starters(slots)
@@ -99,7 +99,7 @@ https://www.ultraboardgames.com/mastermind/game-rules.php
 Please create a secret code!
 Remember it well, or write it down somewhere.
 
-Press Enter to continue
+Press Enter to start!
 """)
     possible_codes = gf.all_possible_codes(slots=slots, colour_range=colour_range)
 
