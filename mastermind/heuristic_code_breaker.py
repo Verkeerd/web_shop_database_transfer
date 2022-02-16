@@ -127,7 +127,9 @@ My first guess is {}
     while feedback_pins != (slots, 0):
         rounds += 1
         # eliminates all combination no longer possible with the provided feedback
-        possible_codes = mastermind_functions.eliminate_codes(guess=guess, all_codes=possible_codes, feedback_pins=feedback_pins)
+        possible_codes = mastermind_functions.eliminate_codes(guess=guess,
+                                                              all_codes=possible_codes,
+                                                              feedback_pins=feedback_pins)
 
         if not possible_codes:
             print('I\'m all out of guesses!\nPlease review your feedback to make sure you didn\'t make a mistake.')

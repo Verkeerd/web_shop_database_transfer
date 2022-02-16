@@ -114,9 +114,11 @@ We thought of something!
     # loop is broken when the user gives the correct combination.
     print('Congratulations!             {} is correct!\n'
           'The secret combination was   {}.\n'
-          'It took you {} rounds to guess the secret combination\n'.format(mastermind_functions.format_colours(guess),
-                                                                           mastermind_functions.format_colours(secret_code),
-                                                                           rounds))
+          'It took you {} rounds to guess the secret combination\n'.format(
+        mastermind_functions.format_colours(guess),
+        mastermind_functions.format_colours(secret_code),
+        rounds))
+
     # asks user if they want to play again or quit.
     if input('1) Play again\n2) Open selection menu\n') == '1':
         code_creator()

@@ -3,7 +3,7 @@ import mastermind_functions
 
 def knuth_best_guess(codes_to_check, all_codes, potential_pins):
     """
-    Takes all codes to consider as guess (list) [(int)]; all potential codes (list) [(int)]; potential_pins [(int, int)]0
+    Takes all codes to consider as guess (list) [(int)]; all potential codes (list) [(int)]; potential_pins [(int, int)]
     as input. Calculates the amount of codes left after all possible feedback (combination of white and black pins) that
     can be received. Keeps track of the worst case scenario for every considered guess
     (worst case scenario = the highest amount of codes left over).

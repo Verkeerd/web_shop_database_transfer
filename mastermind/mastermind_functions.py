@@ -236,14 +236,15 @@ def all_possible_codes(slots, colour_range):
 
     return list(iter_product(iter_colours, repeat=slots))
 
+
 def get_starters(slots):
     """Takes slots (int) as input. Returns possible starters based on the amount of slots (tuple)."""
     if slots == 2:
-        return [(0,0), (0,1)]
+        return [(0, 0), (0, 1)]
     if slots == 3:
-        return [(0,0,0), (0,0,1), (0,1,2)]
+        return [(0, 0, 0), (0, 0, 1), (0, 1, 2)]
     if slots == 4:
-        return [(0,0,0,0), (0,0,0,1), (0,0,1,1), (0,0,1,2), (0,1,2,3)]
+        return [(0, 0, 0, 0), (0, 0, 0, 1), (0, 0, 1, 1), (0, 0, 1, 2), (0, 1, 2, 3)]
     return None
 
 
