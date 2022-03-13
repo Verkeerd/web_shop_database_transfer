@@ -11,7 +11,8 @@ Install pgadmin. Create a local database and run the file make_web_shop_simple.d
 You are now ready use this project.
 
 # Design
-The database is designed as following: 
+This is the phisical datamodel of the SQL Webshop Database:
+
 ![web_shop_physical_datamodel](https://user-images.githubusercontent.com/96492291/158082661-25111f16-acdf-493c-a097-8c7961251d29.png)
 
 We have chosen for this datastructure because we felt that we only needed the product_id, product_name and 
