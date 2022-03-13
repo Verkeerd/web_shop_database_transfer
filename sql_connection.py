@@ -7,10 +7,10 @@ def connect_sql():
 
     try:
         # establishes the  database connection
-        connection = psycopg2.connect(host = 'localhost',
-                                      database = 'postgres',
-                                      user = 'postgres',
-                                      password = 'uhswqf%#BD078')
+        connection = psycopg2.connect(host='localhost',
+                                      database='postgres',
+                                      user='postgres',
+                                      password='uhswqf%#BD078')
 
         # creates cursor
         cursor = connection.cursor()
