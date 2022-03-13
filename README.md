@@ -30,7 +30,7 @@ The assignments for FA2 are completed in the following files:
 - Assignment 2.c.3 is completed in random_and_absolute_difference_products.py
 
 # Contributions
-This project is made as an assignment and is not open for contribution outside of our project group.
+This project is made as an assignment and is not open for contribution outside our project group.
 There is no hierarchy in our project group so there are no rules regarding pushing and pulling. 
 Please hold yourself to a clean code etiquette when you code for this project.
  
