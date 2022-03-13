@@ -3,9 +3,8 @@ import general_support_algorithms as support
 import random
 
 
-def select_random_product():
+def select_random_product(products):
     """Fetches the name and price of a random product in the sql webshop database."""
-    products = load_sql.name_price_products()
     random_value = random.randint(0, len(products))
     return products[random_value]
 
@@ -15,7 +14,7 @@ def absolute_biggest_difference():
     Fetches a random product. Returns the name of this product.
     """
     products = load_sql.name_price_products()
-    random_product = select_random_product()
+    random_product = select_random_product(products)
 
     products = support.binary_sort_matrix_lst(products, 0)
     # TODO: Test if calculating the highest and lowest products would be quicker than sorting

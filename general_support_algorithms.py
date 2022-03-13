@@ -3,6 +3,13 @@ def select_index(datapoint):
     return datapoint[0]
 
 
+def select_column(matrix, index):
+    result = []
+    for row in matrix:
+        result.append(row[index])
+    return result
+
+
 def binary_search_index_matrix(matrix, target, index, low, high):
     """
     searches for the index of the target in the column {index} of the data matrix.
