@@ -1,7 +1,8 @@
 # Web_shop_database_transfer
 A repository dedicated to transfering data supporting a webshop from a mongodb database to an sql database. 
 This project is made as an assignment for the course structured programming. 
-MongoDB, PostgreSQL and PGAdmin4 are used with this project
+MongoDB, PostgreSQL and PGAdmin4 are used with this project.
+
 Authors: Kasper Sikkema, Daan Kleijn, Marnix Wesseling, Susan Bruggeling
 
 # Installation
