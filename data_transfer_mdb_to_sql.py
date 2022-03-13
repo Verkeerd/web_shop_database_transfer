@@ -36,11 +36,6 @@ def upload_all_products():
 
     for product in list(products_collection.find()):
         sql_query, format_values = create_product_query(product)
-        temp_count = 0
-        print(sql_query.split(sep=', '))
-        for item in sql_query.split(sep=', '):
-            if item == '%s':
-                temp_count += 1
 
         sql_cursor.execute(sql_query, format_values)
         print(sql_query)
