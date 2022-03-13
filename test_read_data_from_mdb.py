@@ -1,13 +1,7 @@
-from pymongo import MongoClient
+import mongo_connection as mdb_c
 import pprint
 
-client = MongoClient()
-
-db_names = client.list_database_names()
-
-print(db_names)
-
-database = client.recommendationEngine
+database = mdb_c.connect_mdb()
 
 session_collection = database.sessions
 product_collection = database.products
@@ -18,6 +12,7 @@ product_list = [product for product in product_collection.find()]
 first_product = product_list[0]
 
 pprint.pprint(first_product)
+
 print(type(first_product))
 
 print('The first product\'s name is: {}'.format(first_product['name']))
