@@ -1,12 +1,12 @@
 # Web_shop_database_transfer
-A repository dedicated to transfering data supporting a webshop from a mongodb database to an sql database. 
+A repository dedicated to transferring data supporting a web-shop from a mongodb database to a sql database. 
 This project is made as an assignment for the course structured programming. 
 MongoDB, PostgreSQL and PGAdmin4 are used with this project.
 
 Authors: Kasper Sikkema, Daan Kleijn, Marnix Wesseling, Susan Bruggeling
 
 # Installation
-We assumes you already have access to the mongodb database and have transferred this to a local mongo server.
+We assume you already have access to the mongodb database and have transferred this to a local mongo server.
 
 Clone this repository.
 Install pgadmin. Create a local database and run the file make_web_shop_simple.ddl with the query tool in pgadmin.
@@ -24,7 +24,7 @@ the original mongoDB database.
 
 # Assignments
 The assignments for FA2 are completed in the following files:
-- Assingments 2.a is completed in test_read_data_from_mdb.py
+- Assignments 2.a are completed in test_read_data_from_mdb.py
 - Assignment 2.c.1 is completed in load_data_sql.py
 - Assignment 2.c.2 is completed in mean_price_products.py
 - Assignment 2.c.3 is completed in random_and_absolute_difference_products.py
