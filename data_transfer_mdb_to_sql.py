@@ -41,3 +41,7 @@ def upload_all_products():
         print(sql_query)
     sql_connection.commit()
     sql_c.disconnect_sql(sql_connection, sql_cursor)
+
+
+if __name__ == '__main__':
+    upload_all_products()
