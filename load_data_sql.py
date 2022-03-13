@@ -17,7 +17,7 @@ def all_product_prices():
     return list(products)
 
 
-def load_products_sql():
+def name_price_products():
     """
     Fetches the price and the product name of all products in the sql web-shop database. Returns these values (list)
     [(int, str)]
@@ -33,4 +33,4 @@ def load_products_sql():
 
 
 if __name__ == '__main__':
-    print(load_products_sql())
+    print(name_price_products())
