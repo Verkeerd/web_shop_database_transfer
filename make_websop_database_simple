@@ -1,0 +1,5 @@
+CREATE TABLE products (
+	product__id 				VARCHAR 			CONSTRAINT c_prod_pk_id 			PRIMARY KEY,
+	product_name 				VARCHAR				CONSTRAINT c_prod_nn_name 			NOT NULL,
+	current_price 				INT					CONSTRAINT c_prod_nn_price 			NOT NULL
+);
