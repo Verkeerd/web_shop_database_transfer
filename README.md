@@ -3,8 +3,6 @@ A repository dedicated to transferring data supporting a web-shop from a mongodb
 This project is made as an assignment for the course structured programming. 
 MongoDB, PostgreSQL and PGAdmin4 are used with this project.
 
-Authors: Kasper Sikkema, Daan Kleijn, Marnix Wesseling, Susan Bruggeling
-
 # Installation
 We assume you already have access to the mongodb database and have transferred this to a local mongo server.
 
