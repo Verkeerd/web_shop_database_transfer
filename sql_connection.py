@@ -1,7 +1,7 @@
 import psycopg2
 
 
-def connect_sql():
+def connect():
     """Connects to the local PostgreSQL database."""
     connection = None
 
@@ -22,9 +22,7 @@ def connect_sql():
         return error
 
 
-def disconnect_sql(connection, cursor):
-    """
-    Takes an active cursor and connection for a PostgreSQL database as input. closes the cursor and the connection.
-    """
+def disconnect(connection, cursor):
+    """Takes an active cursor and connection with a PostgreSQL database as input. Closes the cursor and connection."""
     cursor.close()
     connection.close()
