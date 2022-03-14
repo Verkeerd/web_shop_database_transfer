@@ -6,7 +6,8 @@ import time
 
 def absolute_biggest_difference_sort():
     """
-    Fetches a random product. Returns the name of this product.
+    Fetches a random product. Calculates which product has the biggest absolute difference in price with this random
+    product and returns the name of this other product (str).
     """
     start_time = time.time_ns()
     products = load_sql.name_price_products()
@@ -25,7 +26,8 @@ def absolute_biggest_difference_sort():
 
 def absolute_biggest_difference_min_max():
     """
-    Fetches a random product. Returns the name of this product.
+    Fetches a random product. Calculates which product has the biggest absolute difference in price with this random
+    product and returns the name of this other product (str).
     """
     start_time = time.time_ns()
 
@@ -50,7 +52,7 @@ def absolute_biggest_difference_min_max():
 
 
 if __name__ == '__main__':
-    print('original with sort:')
+    print('original algorithm with sort:')
     print(absolute_biggest_difference_sort())
-    print('new  with min, max')
+    print('\nnew algorithm with min, max')
     print(absolute_biggest_difference_min_max())

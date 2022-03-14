@@ -7,7 +7,7 @@ session_collection = database.sessions
 product_collection = database.products
 profile_collection = database.profiles
 
-product_list = [product for product in product_collection.find()]
+product_list = list(product_collection.find())
 
 first_product = product_list[0]
 

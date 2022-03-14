@@ -11,7 +11,8 @@ def select_random_product(products):
 
 def absolute_biggest_difference():
     """
-    Fetches a random product. Returns the name of this product.
+    Fetches a random product. Calculates which product has the biggest absolute difference in price with this random
+    product and returns the name of this other product (str).
     """
     products = load_sql.name_price_products()
     random_product = select_random_product(products)

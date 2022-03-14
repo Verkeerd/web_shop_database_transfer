@@ -19,6 +19,7 @@ def connect_sql():
     # raises exceptions
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
+        return error
 
 
 def disconnect_sql(connection, cursor):

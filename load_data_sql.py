@@ -3,7 +3,7 @@ import general_support_algorithms as support
 
 
 def all_product_prices():
-    """Fetches the price of all products in the sql web-shop database. Returns these values (list) [(int)]"""
+    """Fetches the price of all products in the sql web-shop database. Returns these values (list) [(int)]."""
     sql_query = """SELECT selling_price FROM products"""
     # connect
     connection, cursor = sql_c.connect_sql()
@@ -20,7 +20,7 @@ def all_product_prices():
 def name_price_products():
     """
     Fetches the price and the product name of all products in the sql web-shop database. Returns these values (list)
-    [(int, str)]
+    [(int, str)].
     """
     sql_query = """SELECT selling_price, product_name FROM products"""
     connection, cursor = sql_c.connect_sql()
