@@ -1,5 +1,4 @@
 import load_data_sql as load_sql
-import general_support_algorithms as support
 from random_and_absolute_difference_products import select_random_product
 import time
 
@@ -35,7 +34,10 @@ def absolute_biggest_difference_min_max():
     random_product = select_random_product(products)
 
     # composes a list with all prices.
-    prices = support.select_column(products, 0)
+    prices = []
+    for row in products:
+        prices.append(row[0])
+
     # selects the product tuple with the lowest price
     lowest_price_product = products[prices.index(min(prices))]
     # selects the product tuple with the highest price

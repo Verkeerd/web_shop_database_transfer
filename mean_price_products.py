@@ -1,10 +1,10 @@
 import load_data_sql as load_sql
-import general_support_algorithms as support
 
 
 def mean_price_products():
     """Calculates the mean price of all the products in the web-shop database. Returns the price (float)."""
-    return support.list_mean(load_sql.all_product_prices())
+    product_prizes = load_sql.all_product_prices()
+    return sum(product_prizes) / len(product_prizes)
 
 
 def mean_price_products_formatted():
